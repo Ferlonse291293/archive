@@ -1,0 +1,34 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;          /* важно */
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #4CAF50;
+  color: white;
+  padding: 20px;
+}
+
+main {
+  flex: 1 0 auto;             /* растягивается */
+  padding: 20px;
+  background: #f0f0f0;
+}
+
+footer {
+  flex-shrink: 0;             /* не сжимается */
+  background: #333;
+  color: white;
+  padding: 20px;
+}
+
+app-root{
+  display: flex;
+  flex: 1;
+}

@@ -2,13 +2,13 @@ import { createReducer, on } from '@ngrx/store';
 
 
 
-import {changeLanguageActions, onMainLoadingActions} from './settings.actions';
+import {changeLanguageActions, onMainLoadingActions, toggleSidebarActions} from './settings.actions';
 import {initialClientsState} from './settings.state';
-import {Language} from '../../shared';
+
 
 export const settingsReducer = createReducer(
   initialClientsState,
-
+  // Loading
   on(onMainLoadingActions.start, (state, v) => ({
     ...state,
     isLoading: v
@@ -16,6 +16,7 @@ export const settingsReducer = createReducer(
   on(onMainLoadingActions.success, (state) => state),
   on(onMainLoadingActions.failure, (state) => state),
 
+  // Language
   on(changeLanguageActions.change, (state , {lang}) => ({
     ...state,
     language: lang
@@ -23,6 +24,11 @@ export const settingsReducer = createReducer(
   on(changeLanguageActions.success, (state) => state),
   on(changeLanguageActions.failure, (state) => state),
 
+  // Sidebar
+  on(toggleSidebarActions.toggle, (state ) => ({
+    ...state,
+    isOpenSidebar: !state.isOpenSidebar
+  })),
 
 
 

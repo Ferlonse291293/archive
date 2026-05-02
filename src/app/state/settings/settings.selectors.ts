@@ -7,3 +7,7 @@ export const currentLanguage = createSelector(
   selectSettingsState,
   (state: SettingsState) => state.language
 );
+export const isOpenSidebarLanguage = createSelector(
+  selectSettingsState,
+  (state: SettingsState) => state.isOpenSidebar
+);

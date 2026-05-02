@@ -4,7 +4,7 @@ import {Language} from '../../shared';
 
 //////// LOADING
 export const onMainLoadingActions = createActionGroup({
-  source: 'MAIN LOADING',
+  source: 'SETTINGS LOADING',
   events: {
      start : props<{ start: boolean }>(),
      success:  emptyProps(),
@@ -15,10 +15,18 @@ export const onMainLoadingActions = createActionGroup({
 //////// LANGUAGE
 
 export const changeLanguageActions = createActionGroup({
-  source: 'MAIN LANGUAGE',
+  source: 'SETTINGS LANGUAGE',
   events: {
     change : props<{ lang: Language }>(),
     success:  emptyProps(),
     failure: props<{ error: boolean }>(),
   }
 },);
+
+export const toggleSidebarActions = createActionGroup({
+  source: 'SETTINGS SIDEBAR',
+  events: {
+    toggle : emptyProps(),
+  }
+},);
+

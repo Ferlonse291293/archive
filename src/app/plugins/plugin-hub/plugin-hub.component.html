@@ -1,0 +1,24 @@
+<div class="plugin-grid">
+
+
+  @for( plugin of plugins ; track plugin.title){
+    <mat-card class="plugin-card"
+      (click)="openPlugin(plugin.route)"
+    >
+      <mat-card-title>
+        {{ plugin.title }}
+      </mat-card-title>
+
+      <mat-card-subtitle>
+        {{ plugin.description }}
+      </mat-card-subtitle>
+
+      <mat-icon>{{ plugin.icon }}</mat-icon>
+
+    </mat-card>
+  }
+
+
+</div>
+
+

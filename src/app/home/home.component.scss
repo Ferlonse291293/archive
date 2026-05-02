@@ -1,0 +1,40 @@
+.shell {
+  display: grid;
+
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+
+  height: 100%;
+}
+
+/* AREAS */
+.header {
+  grid-area: header;
+}
+
+.main {
+  grid-area: main;
+  min-height: 0;
+}
+
+.footer {
+  grid-area: footer;
+}
+
+/* MATERIAL */
+.container {
+  height: 100%;
+  background: antiquewhite;
+}
+
+.sidebar {
+  width: 260px;
+}
+
+.content {
+  height: 100%;
+  overflow: auto;
+}

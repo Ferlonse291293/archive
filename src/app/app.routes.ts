@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import {archiveRoutes} from './plugins/archive.routes';
-import {HomeComponent} from './home/home/home.component';
-import {AuthComponent} from './auth/auth/auth.component';
 import {RouteNames} from './shared/consts/route-names';
 
 
@@ -9,30 +7,35 @@ import {RouteNames} from './shared/consts/route-names';
 
 
 
+
+
 export const routes: Routes = [
-  // 🔓 Публичная зона
+  ///REDIRECT
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
+     ///AUTH
   {
     path: RouteNames.AUTH,
-    component: AuthComponent
+    loadComponent: () =>
+      import('./auth/auth.component').then(m => m.AuthComponent),
+    children: archiveRoutes
   },
-
-  // 🔒 Приватная зона
+     ///HOME
   {
-    path: '',
-    component: HomeComponent,
-    // canActivate: [authGuard], // 👈 защита
-    children: [
-      {
-        path: RouteNames.ARCHIVE,
-        children:  archiveRoutes
-      }
-    ]
+    path: 'home',
+    loadComponent: () =>
+      import('./home/home.component').then(m => m.HomeComponent),
+    children: archiveRoutes
   },
-
-  // редирект по умолчанию
-  {
-    path: '',
-    redirectTo: 'archive/clients',
-    pathMatch: 'full'
-  }
+  ///NOT-FOUND
+  // {
+//     path: '**',
+//     redirectTo: 'app-not-found',
+//     pathMatch: 'full'
+//   }
 ];
+
+

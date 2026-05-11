@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-documents',
+  selector: 'app-clients-search',
   standalone: true,
   imports: [],
-  templateUrl: './documents.component.html',
-  styleUrl: './documents.component.scss',
+  templateUrl: './clients-search.component.html',
+  styleUrl: './clients-search.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DocumentsComponent {
+export class ClientsSearchComponent {
 
 }

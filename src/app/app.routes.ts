@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {archiveRoutes} from './plugins/archive.routes';
+import {archiveRoutes} from './features/archive.routes';
 import {RouteNames} from './shared/consts/route-names';
 
 

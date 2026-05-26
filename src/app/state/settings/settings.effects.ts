@@ -2,10 +2,10 @@
 // import { Actions, createEffect, ofType } from '@ngrx/effects';
 // import { catchError, map, switchMap, of } from 'rxjs';
 // import { ClientDataService } from '../../../data/services';
-// import { ClientsActions } from './clients.actions';
+// import { DocumentsActions } from './clients.actions';
 //
 // @Injectable()
-// export class ClientsEffects {
+// export class DocumentsEffects {
 //   constructor(
 //     private actions$: Actions,
 //     private clientDataService: ClientDataService
@@ -13,14 +13,14 @@
 //
 //   loadClients$ = createEffect(() =>
 //     this.actions$.pipe(
-//       ofType(ClientsActions.loadClients),
+//       ofType(DocumentsActions.loadClients),
 //       switchMap(() =>
 //         this.clientDataService.getClients().pipe(
 //           map((clients) =>
-//             ClientsActions.loadClientsSuccess({ clients })
+//             DocumentsActions.loadClientsSuccess({ clients })
 //           ),
 //           catchError((error) =>
-//             of(ClientsActions.loadClientsFailure({ error }))
+//             of(DocumentsActions.loadClientsFailure({ error }))
 //           )
 //         )
 //       )

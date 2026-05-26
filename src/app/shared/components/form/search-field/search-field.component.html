@@ -1,0 +1,20 @@
+<ng-container [formGroup]="form">
+
+  <mat-select formControlName="scope" class="select">
+    <mat-option value="">All</mat-option>
+    <mat-option value="at">Austria</mat-option>
+    <mat-option value="ua">Ukraine</mat-option>
+  </mat-select>
+
+  <mat-divider class="divider" [vertical]="true"></mat-divider>
+
+  <input
+    #inputEl
+    class="input"
+    formControlName="query"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    type="text"
+  />
+
+</ng-container>

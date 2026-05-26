@@ -1,5 +1,44 @@
 {
   "MENU": {
-    "HOME": "Archive"
+    "HOME": "Archive",
+    "CLIENTS": "Clients",
+    "SETTINGS": "Settings",
+    "DOCUMENTS": "Documents"
+  },
+
+  "ERROR_VALIDATORS": {
+    "CHARACTERS": "characters",
+    "REQUIRED": "Field cannot be empty",
+    "EMAIL": "Does not match @email format",
+    "MIN_LENGTH": "Must contain at least",
+    "MAX_LENGTH": "Must not exceed"
+  },
+
+  "CLIENTS": {
+    "CLIENT_SEARCH": {
+      "FIRST_NAME": "First name",
+      "LAST_NAME": "Last name",
+      "TYPE": "Type",
+      "DEPARTMENT": "Department",
+      "STATUS": "Status",
+      "CODE_CLIENT": "Client code",
+      "IPN": "Tax ID",
+      "SERIES_IDENTITY_DOCUMENT": "Document series",
+      "NUMBER_IDENTITY_DOCUMENT": "Document number"
+    },
+    "CLIENT_TABLE_COL": {
+      "FULL_NAME": "Full name",
+      "CODE_CLIENT": "Client code",
+      "IPN": "EDRPOU / Tax ID",
+      "TYPE": "Type",
+      "SERIES_NUMBER_IDENTITY_DOCUMENT": "Document series / number",
+      "NUMBER_IDENTITY_DOCUMENT": "Document number",
+      "DEPARTMENT": "Department",
+      "STATUS": "Status"
+    }
   }
 }
+
+
+
+

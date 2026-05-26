@@ -1,0 +1,34 @@
+
+  <mat-form-field appearance="outline">
+    <mat-label>
+      {{ label() }}
+    </mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [value]="value"
+    [placeholder]="placeholder()"
+    [disabled]="disabled"
+    (dateChange)="handle($event.value)"
+    (blur)="onTouched()"
+  />
+
+  <mat-datepicker-toggle
+    matIconSuffix
+    [for]="picker"
+  />
+
+  <mat-datepicker #picker />
+
+    <mat-hint [hidden]="!hint()">
+      {{ hint() }}
+    </mat-hint>
+
+
+    <mat-error [hidden]="!error()">
+      {{ error() }}
+    </mat-error>
+
+  </mat-form-field>
+
+

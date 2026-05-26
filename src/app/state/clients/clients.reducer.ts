@@ -1,27 +1,29 @@
-// import { createReducer, on } from '@ngrx/store';
-// import { clientsAdapter } from './clients.adapter';
-// import { initialState } from './clients.state';
-// import { ClientsActions } from './clients.actions';
-//
-// export const clientsReducer = createReducer(
-//   initialState,
-//
-//   on(ClientsActions.loadClients, (state) => ({
-//     ...state,
-//     isLoading: true
-//   })),
-//
-//   on(ClientsActions.loadClientsSuccess, (state, { clients }) =>
-//     clientsAdapter.setAll(clients, {
-//       ...state,
-//       isLoading: false,
-//       error: null
-//     })
-//   ),
-//
-//   on(ClientsActions.loadClientsFailure, (state, { error }) => ({
-//     ...state,
-//     isLoading: false,
-//     error
-//   }))
-// );
+import { createReducer, on } from '@ngrx/store';
+
+
+
+import {ClientsActions} from './clients.actions';
+import {initialClientsState} from './clients.state';
+
+
+export const clientsReducer = createReducer(
+  initialClientsState,
+  // GET CLIENTS
+  on(ClientsActions.getClients.req, (state) => state),
+  on(ClientsActions.getClients.success, (state, action) => ({
+    ...state
+  })),
+  on(ClientsActions.getClients.failure, (state) => state),
+
+  // GET CLIENT
+  on(ClientsActions.getClient.req, (state) => state),
+  on(ClientsActions.getClient.success, (state, action) => ({
+    ...state,
+    currentClient: action.client
+  })),
+  on(ClientsActions.getClient.failure, (state) => state),
+
+
+
+
+);

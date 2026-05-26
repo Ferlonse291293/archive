@@ -1,12 +1,13 @@
 import {ISectionConfig} from './section-config.interface';
-import {SectionsKeys} from '../sections-keys.namespace';
+import {SectionsKey} from '../sections-keys.namespace';
+import {DataFacadeMap, StateFacadeMap, StoreFacadeKey} from '../../facades/store-facade.registry';
 
 export interface IBaseSection{
-  key: SectionsKeys
+  key: SectionsKey
   params: Record<any, any>;
-  state: unknown;
-  data: unknown;
-  preInit()
-  init(config: ISectionConfig)
-  destroy()
+  state: Partial<StateFacadeMap>
+  data: Partial<DataFacadeMap>
+  preInit(): void;
+  init(config: ISectionConfig): void;
+  destroy(): void;
 }

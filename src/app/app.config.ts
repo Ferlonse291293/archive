@@ -11,6 +11,7 @@ import {stateProvider} from './state/state.provider';
 import {translateInitProvider, translateProvider} from './core/config/translate/translate.provider';
 import {dataProvider} from './core/data/data.provider';
 import {provideStoreDevtools} from '@ngrx/store-devtools';
+import {provideAnimations} from '@angular/platform-browser/animations';
 
 
 
@@ -19,8 +20,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
 
     provideHttpClient(  withFetch(), withInterceptors(dataProvider)),
-
-
 
     provideRouter(routes),
 

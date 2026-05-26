@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {AuthContextService} from './configs/auth-context.service';
 
 @Component({
   selector: 'app-auth',
-  imports: [],
+  imports: [RouterOutlet],
+  providers: [AuthContextService],
   standalone: true,
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.scss'
+  template: `<router-outlet />`,
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit{
+  private authContext = inject<AuthContextService>(AuthContextService);
+
+  ngOnInit(): void {
+
+  }
+
 
 }

@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" class="full-width">
+
+  <mat-label>{{ label() }}</mat-label>
+
+  <input
+    matInput
+    [id] ="id()"
+    [formControl]="control()"
+    [placeholder]="placeholder()"
+    [required]="required()"
+  />
+  @for (err of errors ; track err ){
+    <mat-error >
+      {{err}}
+    </mat-error>
+  }
+
+
+</mat-form-field>

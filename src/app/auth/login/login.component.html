@@ -1,0 +1,26 @@
+
+
+
+<form [formGroup]="form">
+
+  <app-text-field
+    label="Email"
+    name="email"
+    [control] = "form.controls.email"
+  />
+
+  <app-password-field
+    label="Password"
+    [control] = "form.controls.password"
+  />
+
+  <button type="submit"
+          (click)="login()"
+          mat-stroked-button
+  >
+    Login
+  </button>
+
+  <p>  {{'ivan.sidorov@example.com'}}</p>
+  <p> {{'Ivan#Login9'}}</p>
+</form>

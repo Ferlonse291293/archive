@@ -1,21 +1,21 @@
-
-import {TokenService} from '../services/token.service';
 import {NO_AUTH} from '../utils/http-context.tokens';
 import {HttpInterceptorFn} from '@angular/common/http';
 import {inject} from '@angular/core';
+import {SecurityService} from '../../services/security.service';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  const tokenService = inject(TokenService);
-  const token = tokenService.get();
+   const securityService = inject(SecurityService);
 
-  if (!token || req.context.get(NO_AUTH)) {
+
+  if (!securityService.getCsrfToken() || req.context.get(NO_AUTH)) {
     return next(req);
   }
 
   return next(
     req.clone({
+      withCredentials: true,
       setHeaders: {
-        Authorization: `Bearer ${token}`
+        'x-csrf-token': securityService.getCsrfToken()
       }
     })
   );

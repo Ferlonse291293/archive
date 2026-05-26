@@ -1,9 +1,11 @@
 import {IConfigController} from '../../../core/model/interfaces/config-controller.interface';
-import {SectionsFactory} from '../../../core/base/sections-factory';
-import {SectionClientConfig} from './section-client-config';
-import {GLOBAL_SERVICES} from '../../../shared/consts/global-services';
+import {ClientSearchSectionConfig} from './section-client-search-config';
+
+import {storeFacadeKeys} from '../../../core/facades/store-facade.registry';
+import {ClientDocumentsSectionConfig} from './section-client-documents-config';
 
 export const clientConfig: IConfigController =  {
-  sections: SectionsFactory.createSections([SectionClientConfig]),
-  services: [GLOBAL_SERVICES.DISPLAY, GLOBAL_SERVICES.ROLE, GLOBAL_SERVICES.SECURITY]
+  sections: [new  ClientSearchSectionConfig() , new ClientDocumentsSectionConfig()],
+  data: [storeFacadeKeys.CLIENTS,storeFacadeKeys.DOCUMENTS],
+  state: [storeFacadeKeys.CLIENTS, storeFacadeKeys.DOCUMENTS]
 }

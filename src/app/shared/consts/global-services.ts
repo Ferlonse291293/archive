@@ -1,20 +1,15 @@
-import {InjectionToken} from '@angular/core';
+
 import {DisplayService} from '../../core/services/display.service';
-import {RoleService} from '../../core/services/role.service';
+import {ModalService} from '../../core/services/modal.service';
+import {SecurityService} from '../../core/services/security.service';
+import {RouterService} from '../../core/services/router.service';
 
 export const GLOBAL_SERVICES = {
-  DISPLAY: new InjectionToken<DisplayService>('DISPLAY'),
-  ROLE: new InjectionToken<RoleService>('ROLE'),
-  SECURITY: new InjectionToken<RoleService>('ROLE'),
-  MODAL: new InjectionToken<RoleService>('ROLE'),
+  DISPLAY: DisplayService,
+  SECURITY: SecurityService,
+  MODAL: ModalService,
+  ROUTER: RouterService,
 } as const;
 
+export type GlobalServiceKey = keyof typeof GLOBAL_SERVICES;
 
-// export class GlobalServicesHelper {
-//
-//
-//   protected getService<T>(token: InjectionToken<T>): T {
-//     return this.services.get(token);
-//   }
-//
-// }

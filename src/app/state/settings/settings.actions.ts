@@ -1,6 +1,7 @@
-// settings.actions.ts
+// auth.actions.ts
 import {createActionGroup, emptyProps, props} from '@ngrx/store';
 import {Language} from '../../shared';
+import {login, profile, refreshToken} from '../auth/auth.actions';
 
 //////// LOADING
 export const onMainLoadingActions = createActionGroup({
@@ -28,5 +29,13 @@ export const toggleSidebarActions = createActionGroup({
   events: {
     toggle : emptyProps(),
   }
-},);
+},
+  );
+
+export const settingsActions = {
+  onMainLoadingActions,
+  changeLanguageActions,
+  toggleSidebarActions
+};
+
 

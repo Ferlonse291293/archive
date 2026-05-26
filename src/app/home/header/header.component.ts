@@ -5,7 +5,7 @@ import {Store} from '@ngrx/store';
 import {MatButton, MatIconButton} from '@angular/material/button';
 
 import {MatToolbar} from '@angular/material/toolbar';
-import {toggleSidebarActions} from '../../state/settings/settings.actions';
+import {settingsActions, toggleSidebarActions} from '../../state/settings/settings.actions';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +26,7 @@ export class HeaderComponent {
   private store = inject(Store);
 
   toggleSidebar(){
-    this.store.dispatch(toggleSidebarActions.toggle())
+    this.store.dispatch(settingsActions.toggleSidebarActions.toggle())
   }
 
   logout() {

@@ -1,11 +1,19 @@
-export namespace SectionsKeys {
-  export enum Clients {
-    searchClient = "searchClient",
-    documentsClient = "documentsClient"
-  }
+import {NestedValues} from '../helpers/nested-values.type';
 
-  export enum Orders {
-    createOrder = "createOrder",
-    listOrders = "listOrders"
+export const SectionsKeys = {
+  Auth: {
+    login: 'login',
+  },
+
+  Clients: {
+    searchClient: 'searchClient',
+    documentsClient: 'documentsClient',
+  },
+
+  Orders: {
+    createOrder: 'createOrder',
+    listOrders: 'listOrders',
   }
-}
+} as const;
+
+export type SectionsKey = NestedValues<typeof SectionsKeys>;

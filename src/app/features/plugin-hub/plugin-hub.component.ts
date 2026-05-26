@@ -25,9 +25,6 @@ export class PluginHubComponent {
     { title: 'Users', description: 'Пользователи', icon: 'people', route: '/users' },
     { title: 'Settings', description: 'Настройки', icon: 'settings', route: '/settings' }
   ];
-
-
-
   openPlugin(route: string) {
     // this.router.navigate([route]);
   }

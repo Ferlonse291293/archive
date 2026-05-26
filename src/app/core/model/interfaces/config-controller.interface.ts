@@ -1,8 +1,12 @@
-import {IBaseSection} from './base-section.interface';
-import {SectionsKeys} from '../sections-keys.namespace';
-import {GLOBAL_SERVICES} from '../../../shared/consts/global-services';
+
+
+import {ISectionConfig} from './section-config.interface';
+import {StoreFacadeKey} from '../../facades/store-facade.registry';
+
 
 export interface IConfigController{
-  services:  GLOBAL_SERVICES[]
-  sections : Record<SectionsKeys , IBaseSection>
+  services?:  any
+  sections :  ISectionConfig[]
+  data?: StoreFacadeKey[]
+  state?: StoreFacadeKey[]
 }

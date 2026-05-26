@@ -1,5 +1,13 @@
 {
   "MENU": {
     "HOME": "Archive"
+  },
+
+  "ERROR_VALIDATORS": {
+    "CHARACTERS": "символів",
+    "REQUIRED": "Поле не може бути пустим",
+    "EMAIL": "Не відповідає типу @email",
+    "MIN_LENGTH" : "Необхідно ввести не менше",
+    "MAX_LENGTH" : "Допускається не більше"
   }
 }

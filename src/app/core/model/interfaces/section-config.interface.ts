@@ -1,13 +1,17 @@
-import {SectionsKeys} from '../sections-keys.namespace';
+import {SectionsKey} from '../sections-keys.namespace';
+import { GlobalServiceKey} from '../../../shared/consts/global-services';
+
+
 
 /**
  *
  * @param engines - logic components
  */
 export interface ISectionConfig {
-  key: SectionsKeys
+  key: SectionsKey
   params?: Record<any, any>
   engines?: Record<any, unknown>
-  data?: unknown
-  state?: unknown
+  services?: Map<GlobalServiceKey, any>
+  data?:any
+  state?: any
 }

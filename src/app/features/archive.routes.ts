@@ -1,8 +1,9 @@
 import {Routes} from '@angular/router';
 import {AnalyticsComponent} from './analytics/analytics/analytics.component';
 import {DataComponent} from './data/data/data.component';
-import {RouteNames} from '../shared/consts/route-names';
+
 import {clientsRoutes} from './clients/clients.routes';
+import {RouteNames} from '../core/router/route-names';
 
 
 

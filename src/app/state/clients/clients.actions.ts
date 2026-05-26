@@ -1,4 +1,4 @@
-// // settings.actions.ts
+// // auth.actions.ts
 // import { createActionGroup, props } from '@ngrx/store';
 // import { IClient } from '../../../model/data/interfaces';
 //

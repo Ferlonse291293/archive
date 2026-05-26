@@ -5,5 +5,5 @@ import {GLOBAL_SERVICES} from '../../../shared/consts/global-services';
 
 export const clientConfig: IConfigController =  {
   sections: SectionsFactory.createSections([SectionClientConfig]),
-  services: [GLOBAL_SERVICES.DISPLAY, GLOBAL_SERVICES.ROLE, GLOBAL_SERVICES.SECURITY]
+  services: [GLOBAL_SERVICES.DISPLAY, GLOBAL_SERVICES.SECURITY]
 }

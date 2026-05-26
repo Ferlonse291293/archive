@@ -1,9 +1,9 @@
+import {SectionsKey} from '../sections-keys.namespace';
 import {IBaseSection} from './base-section.interface';
 
+
 export interface IBaseController {
-  sections: Record<string, IBaseSection>
+  getSection(key:  SectionsKey): IBaseSection | undefined
   params: unknown
-  preInit()
-  init()
-  destroy()
+  destroy(): void
 }

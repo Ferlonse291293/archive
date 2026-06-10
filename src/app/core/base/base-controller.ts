@@ -14,9 +14,8 @@ import {SectionsKey} from '../model/sections-keys.namespace';
 export class BaseController implements IBaseController {
   protected sections:  Partial<Record<SectionsKey, IBaseSection>> = {};
   params: unknown;
-  protected  state: Partial<Record<StoreFacadeKey, any>> ={};
-  protected  data: Partial<Record<StoreFacadeKey, any>> ={};
-  protected  services= new Map<GlobalServiceKey, any>();
+  protected  state:Partial<StateFacadeMap> = {} as Partial<StateFacadeMap>;
+  protected  data:Partial<DataFacadeMap> = {} as Partial<DataFacadeMap>;
   constructor(config: IConfigController,  injector: Injector) {
    this.init(config, injector)
   }
@@ -25,7 +24,6 @@ export class BaseController implements IBaseController {
   protected   init(config: IConfigController, injector: Injector) {
       if(config.data) this.initData(config.data, injector)
       if(config.state)this.initState(config.state, injector)
-      this.initServices(config.services, injector)
       this.initSections(config.sections)
 
   }
@@ -36,7 +34,6 @@ export class BaseController implements IBaseController {
   private initSections(sectionConfigs: ISectionConfig[] ){
     this.sections = SectionsFactory.createSections(sectionConfigs.map(conf => {
          return {...conf ,
-           services : this.services  ,
            data:  Object.fromEntries( conf.data.map((key: StoreFacadeKey)  => [key, this.data[key]]) ),
            state: Object.fromEntries( conf.state.map((key: StoreFacadeKey) => [key, this.state[key]]))
          }
@@ -45,14 +42,7 @@ export class BaseController implements IBaseController {
 
   }
 
-  private initServices(servicesConfig: GlobalServiceKey[], injector: Injector) {
-    servicesConfig.forEach(service => {
-      this.services.set(
-        service,
-        injector.get(service)
-      );
-    });
-  }
+
 
   private initData(keys: StoreFacadeKey[], injector: Injector){
     if(keys.length === 0 || !keys) return

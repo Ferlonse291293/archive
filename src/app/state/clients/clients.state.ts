@@ -1,13 +1,19 @@
-// export interface ClientsState {
-//   entities: EntityState<IClient>;
-//   selectedClientId: string | null;
-//   isLoading: boolean;
-//   error: string | null;
-// }
-//
-// export const initialClientsState: ClientsState = {
-//   entities: clientsAdapter.getInitialState(),
-//   selectedClientId: null,
-//   isLoading: false,
-//   error: null
-// };
+
+
+import {IClient, IGetClientsReq} from '../../core/data/endpoints/clients/clients-api.interface';
+
+
+
+export interface ClientsState {
+  lastRequest: IGetClientsReq,
+  currentClient: IClient
+
+}
+
+export const initialClientsState: ClientsState = {
+  lastRequest: {} as IGetClientsReq,
+  currentClient: {} as IClient
+};
+
+
+

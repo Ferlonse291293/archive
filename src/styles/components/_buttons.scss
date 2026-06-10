@@ -1,0 +1,21 @@
+@use '../font';
+
+.btn-icon{
+  background: transparent;
+  vertical-align: middle;
+  border: none;
+  cursor: pointer;
+  font-family: font.$font-family-default;
+
+}
+
+.btn-icon-circle {
+  @extend .btn-icon;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+  &:hover{
+    background: rgba(173, 173, 173, 0.27);
+  }
+}

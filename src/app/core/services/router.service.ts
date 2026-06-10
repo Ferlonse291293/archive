@@ -9,7 +9,11 @@ export class RouterService{
   private router = inject(Router)
 
 
-  redirectTo(key: string){
+  redirectTo(key: NavLinksKey){
     this.router.navigate([key])
+  }
+
+  redirectToWithParam(key: string, param: string){
+    this.router.navigate([ `${key}/:${param}`])
   }
 }

@@ -2,30 +2,31 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatCard, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {MatIcon} from '@angular/material/icon';
+import {RouterService} from '../../core/services/router.service';
+import {NavLinks} from '../../core/router/navigation';
 
 
 @Component({
-  selector: 'app-plugin-hub',
+  selector: 'app-features-hub',
   standalone: true,
   imports: [
     MatCard,
     MatCardTitle,
     MatCardSubtitle,
-    MatIcon,
-
+    MatIcon
   ],
-  templateUrl: './plugin-hub.component.html',
-  styleUrl: './plugin-hub.component.scss',
+  templateUrl: './features-hub.component.html',
+  styleUrl: './features-hub.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class PluginHubComponent {
-  private router = inject(Router)
-  plugins = [
+export class FeaturesHubComponent {
+  private routerService = inject(RouterService)
+  features = [
     { title: 'Analytics', description: 'Статистика', icon: 'bar_chart', route: '/analytics' },
-    { title: 'Users', description: 'Пользователи', icon: 'people', route: '/users' },
+    { title: 'Clients', description: 'Пользователи', icon: 'people', route: NavLinks.CLIENTS },
     { title: 'Settings', description: 'Настройки', icon: 'settings', route: '/settings' }
   ];
-  openPlugin(route: string) {
-    // this.router.navigate([route]);
+  openFeature(route: string) {
+    this.routerService.redirectTo(route);
   }
 }

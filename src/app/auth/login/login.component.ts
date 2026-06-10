@@ -11,6 +11,7 @@ import {IAuthStateFacade} from '../../core/facades/data/auth-data-facade';
 import {ReqLogin} from '../../core/data/endpoints/auth-api.interface';
 import {RouterService} from '../../core/services/router.service';
 import {NavLinks} from '../../core/router/navigation';
+import {DataFacadeMap} from '../../core/facades/store-facade.registry';
 
 @Component({
   selector: 'app-login',
@@ -30,9 +31,9 @@ import {NavLinks} from '../../core/router/navigation';
 export class LoginComponent {
   private fb = inject(FormBuilder)
   private authContext = inject(AuthContextService);
-  private loginSection = this.authContext.getSection(SectionsKeys.Auth.login)
+  private loginSection = this.authContext.getSection(SectionsKeys.Auth.login)!
   private routerService = inject(RouterService)
-  private data: IAuthStateFacade = this.loginSection?.data['AUTH']
+  private data : DataFacadeMap = this.loginSection.data
   isLoginDisabled: boolean = false
 
 
@@ -45,11 +46,11 @@ export class LoginComponent {
   login(){
     this.isLoginDisabled = true
     const req: ReqLogin = {email: this.form.controls.email.value, password: this.form.controls.password.value}
-    this.data.login(req)
+    this.data.AUTH!.login(req)
       .then(res => {
         setTimeout(() => {
           this.isLoginDisabled = false
-          this.data.getProfile().then(res => {
+          this.data.AUTH!.getProfile().then(res => {
             this.routerService.redirectTo(NavLinks.HOME)
           })
         }, 50)

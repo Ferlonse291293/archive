@@ -15,6 +15,7 @@ export class BreadcrumbService {
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe(() => {
+        console.log( this.breadcrumbs)
         this.breadcrumbs = this.build(this.route.root);
       });
   }

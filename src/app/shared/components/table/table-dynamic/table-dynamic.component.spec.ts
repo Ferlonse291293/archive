@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PluginHubComponent } from './plugin-hub.component';
+import { TableDynamicComponent } from './table-dynamic.component';
 
-describe('AppPluginHubComponent', () => {
-  let component: PluginHubComponent;
-  let fixture: ComponentFixture<PluginHubComponent>;
+describe('TableDynamicComponent', () => {
+  let component: TableDynamicComponent;
+  let fixture: ComponentFixture<TableDynamicComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PluginHubComponent]
+      imports: [TableDynamicComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PluginHubComponent);
+    fixture = TestBed.createComponent(TableDynamicComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

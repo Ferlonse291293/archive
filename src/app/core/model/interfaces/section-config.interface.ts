@@ -11,7 +11,6 @@ export interface ISectionConfig {
   key: SectionsKey
   params?: Record<any, any>
   engines?: Record<any, unknown>
-  services?: Map<GlobalServiceKey, any>
   data?:any
   state?: any
 }

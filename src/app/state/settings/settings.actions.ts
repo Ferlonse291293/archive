@@ -1,4 +1,4 @@
-// auth.actions.ts
+// documents.actions.ts
 import {createActionGroup, emptyProps, props} from '@ngrx/store';
 import {Language} from '../../shared';
 import {login, profile, refreshToken} from '../auth/auth.actions';

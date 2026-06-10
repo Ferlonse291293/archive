@@ -16,8 +16,8 @@ export const archiveRoutes : Routes = [
   {
     path:  RouteNames.PLUGIN_HUB,
     loadComponent: () =>
-      import('./plugin-hub/plugin-hub.component')
-        .then(m => m.PluginHubComponent)
+      import('./features-hub/features-hub.component')
+        .then(m => m.FeaturesHubComponent),
   },
 
 

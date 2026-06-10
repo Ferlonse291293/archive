@@ -1,4 +1,5 @@
-// auth.actions.ts
+
+>>>>>>> dev-clients-api
 import {createActionGroup, emptyProps, props} from '@ngrx/store';
 import {Language} from '../../shared';
 import {ReqLogin} from '../../core/data/endpoints/auth-api.interface';

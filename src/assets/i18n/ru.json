@@ -1,5 +1,40 @@
 {
   "MENU": {
-    "HOME": "Главная"
+    "HOME": "Archive",
+    "CLIENTS": "Клієнты",
+    "SETTINGS": "Налаштування",
+    "DOCUMENTS": "Документи"
+  },
+
+  "ERROR_VALIDATORS": {
+    "CHARACTERS": "символів",
+    "REQUIRED": "Поле не може бути пустим",
+    "EMAIL": "Не відповідає типу @email",
+    "MIN_LENGTH" : "Необхідно ввести не менше",
+    "MAX_LENGTH" : "Допускається не більше"
+  },
+  "CLIENTS": {
+    "CLIENT_SEARCH": {
+      "FULL_NAME": "ПІБ",
+      "TYPE": "Тип",
+      "DEPARTMENT": "Відділення",
+      "STATUS": "Статус",
+      "CODE_CLIENT": "Код Клієнта",
+      "IPN": "ІПН",
+      "SERIES_IDENTITY_DOCUMENT": "Серія ідент. документа",
+      "NUMBER_IDENTITY_DOCUMENT": "Номер ідент. документа"
+    },
+    "CLIENT_TABLE_COL": {
+      "FULL_NAME": "ПІБ",
+      "CODE_CLIENT": "Код Клієнта",
+      "IPN": "ЄДРПОУ/ІПН",
+      "TYPE": "Тип",
+
+      "SERIES_NUMBER_IDENTITY_DOCUMENT": "Серія/Номер документу",
+      "NUMBER_IDENTITY_DOCUMENT": "Номер ідент. документа",
+      "DEPARTMENT": "Відділення",
+      "STATUS": "Статус"
+    }
   }
+
 }

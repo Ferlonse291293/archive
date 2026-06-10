@@ -6,7 +6,6 @@ import {storeFacadeKeys} from '../../core/facades/store-facade.registry';
 
 export const authConfig: IConfigController =  {
   sections:  [new LoginSectionConfig()],
-  services: [GLOBAL_SERVICES.DISPLAY, GLOBAL_SERVICES.SECURITY],
   data: [storeFacadeKeys.AUTH],
   state: [storeFacadeKeys.AUTH]
 }

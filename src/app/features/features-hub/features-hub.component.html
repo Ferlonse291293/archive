@@ -1,0 +1,17 @@
+<div class="plugin-grid">
+  @for( feature of features ; track feature.title){
+    <mat-card class="plugin-card"
+      (click)="openFeature(feature.route)"
+    >
+      <mat-card-title>
+        {{ feature.title }}
+      </mat-card-title>
+      <mat-card-subtitle>
+        {{ feature.description }}
+      </mat-card-subtitle>
+      <mat-icon>{{ feature.icon }}</mat-icon>
+    </mat-card>
+  }
+</div>
+
+

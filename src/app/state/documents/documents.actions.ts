@@ -1,5 +1,5 @@
 import {createActionGroup,props} from '@ngrx/store';
-import {IDocumentTree} from '../../core/data/endpoints/documents/documents-api.interface';
+import {IDocument, IDocumentTree} from '../../core/data/endpoints/documents/documents-api.interface';
 
 
 export const getDocumentsTree = createActionGroup({
@@ -12,7 +12,18 @@ export const getDocumentsTree = createActionGroup({
 },
 );
 
+export const getDocument = createActionGroup({
+    source: 'DOCUMENTS_GET_DOCUMENT',
+    events: {
+      req : props<{ documentId: string }>(),
+      success :  props<{ document:  IDocument }>(),
+      failure: props<{ error: string }>(),
+    }
+  },
+);
+
 
 export const DocumentsActions = {
   getDocumentsTree,
+  getDocument,
 };

@@ -1,0 +1,12 @@
+<nav class="breadcrumb">
+  @for (nav  of breadcrumbs() ; track nav.url; let first = $first){
+    <button class="breadcrumb__btn"
+            (click)="redirectTo(nav.url)">
+      @if (!first) {
+        <span class="breadcrumb__triangle-left"></span>
+      }
+      <span class="breadcrumb__text">{{nav.label}}</span>
+      <span class="breadcrumb__triangle-right"></span>
+    </button>
+  }
+</nav>

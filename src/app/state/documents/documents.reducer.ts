@@ -16,7 +16,12 @@ export const documentsReducer = createReducer(
   })),
   on(DocumentsActions.getDocumentsTree.failure, (state) => state),
 
-
+  // GET DOCUMENT
+  on(DocumentsActions.getDocument.req, (state) => state),
+  on(DocumentsActions.getDocument.success, (state, action) => ({
+    ...state, document: action.document
+  })),
+  on(DocumentsActions.getDocument.failure, (state) => state),
 
 
 

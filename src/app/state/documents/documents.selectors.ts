@@ -9,8 +9,14 @@ export const getTreeDocuments = createSelector(
   (state: DocumentsState) => state.treeDocuments
 );
 
-
+export const getDocument = createSelector(
+  selectDocumentsState,
+  (state: DocumentsState) => state.currentDocument
+);
 
 export const DocumentsSelectors = {
-  getTreeDocuments
+  getTreeDocuments,
+  getDocument
 };
+
+

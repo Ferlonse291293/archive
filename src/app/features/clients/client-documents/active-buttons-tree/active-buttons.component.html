@@ -1,0 +1,10 @@
+@if (!isOpenTree()){
+  <button matIconButton class="btn-icon-circle" (click)="expandAll.emit() ;isOpenTree.set(true)">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+} @else {
+  <button matIconButton class="btn-icon-circle" (click)="collapseAll.emit() ;isOpenTree.set(false)" >
+    <mat-icon>expand_more</mat-icon>
+  </button>
+}
+

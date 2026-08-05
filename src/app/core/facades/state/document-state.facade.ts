@@ -1,5 +1,5 @@
 import {Store} from '@ngrx/store';
-import {IDocumentTree} from '../../data/endpoints/documents/documents-api.interface';
+import {IDocument, IDocumentTree} from '../../data/endpoints/documents/documents-api.interface';
 import {firstValueFrom, Observable} from 'rxjs';
 import {DocumentsSelectors} from '../../../state/documents/documents.selectors';
 
@@ -7,6 +7,8 @@ import {DocumentsSelectors} from '../../../state/documents/documents.selectors';
 export interface IDocumentsStateFacade {
   getDocumentsTree$(): Observable<IDocumentTree>
   getDocumentsTree(): Promise<IDocumentTree>
+  getDocument$(): Observable<IDocument>
+  getDocument(): Promise<IDocument>
 }
 
 export class DocumentStateFacade implements IDocumentsStateFacade{
@@ -20,6 +22,13 @@ export class DocumentStateFacade implements IDocumentsStateFacade{
   }
   getDocumentsTree(): Promise<IDocumentTree>{
     return  firstValueFrom(this.store.select(DocumentsSelectors.getTreeDocuments))
+  }
+
+  getDocument$(): Observable<IDocument>{
+    return this.store.select(DocumentsSelectors.getDocument)
+  }
+  getDocument(): Promise<IDocument>{
+    return  firstValueFrom(this.store.select(DocumentsSelectors.getDocument))
   }
 
 

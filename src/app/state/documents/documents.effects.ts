@@ -29,4 +29,22 @@ export class DocumentsEffects {
   );
 
 
+  getDocument$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(DocumentsActions.getDocument.req),
+      switchMap((action) =>
+        this.documentsApi.getDocument(action.documentId).pipe(
+          map(res => {
+              return  DocumentsActions.getDocument.success({document: res})
+            }
+          ),
+          catchError(error =>
+            of(DocumentsActions.getDocument.failure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+
 }

@@ -1,0 +1,78 @@
+@use 'color';
+
+:host{
+  height: 30px;
+  display: flex;
+  flex: 1 0 auto;
+  padding: 3px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+
+  .breadcrumb__btn {
+    position: relative;
+    height: 100%;
+    padding: 0 20px;
+    background: color.$btn-gray;
+    border: 0;
+    overflow: visible;
+    margin-left: 21px;
+    cursor: pointer;
+  }
+  .breadcrumb__btn:first-child{
+    margin-left: 0;
+  }
+
+  &__text{
+    color: white;
+  }
+
+  .breadcrumb__triangle-right {
+    position: absolute;
+    top: 0;
+    right: -19px;
+
+    width: 20px;
+    height: 100%;
+
+    background: color.$btn-gray;
+
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        0 100%
+    );
+  }
+
+  .breadcrumb__triangle-left {
+    position: absolute;
+    bottom: 0;
+    left: -19px;
+
+    width: 20px;
+    height: 100%;
+
+    background: color.$btn-gray;
+
+    clip-path: polygon(
+        0 100%,
+        100% 0,
+        100% 100%
+    );
+  }
+
+
+  .breadcrumb__btn:hover {
+    background: color.$ocean-p2164;
+  }
+
+  .breadcrumb__btn > * {
+    background: inherit;
+  }
+
+
+}

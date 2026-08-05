@@ -1,0 +1,48 @@
+@use 'color';
+
+
+:host{
+  width: 300px;
+  align-self: center;
+}
+.logo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+
+  &__img{
+   color: color.$green-active-light;
+    font-size: 40px;
+    animation: pulse  2s infinite;
+  }
+
+  &__text{
+    font-size: 10px;
+    color: color.$green-active-light;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    color: rgba(color.$green-active-light, 1);
+  }
+
+  25% {
+    color: rgba(color.$green-active-light, 0.7);
+  }
+
+  50% {
+    color: rgba(color.$green-active-light, 0.5);
+  }
+
+  75% {
+    color: rgba(color.$green-active-light, 0.7);
+  }
+  100% {
+    color: rgba(color.$green-active-light,1);
+  }
+}
+
+

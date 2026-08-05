@@ -16,11 +16,21 @@ export interface IDocumentRef {
 }
 
 export interface IFolderDocument {
-  type: 'FOLDER';
-  "id": string,
-  "name": string,
-  "parentFolderId": string
+  id: string;
+  name: string;
+  parentFolderId?: string;
+  parent?: IFolderDocument;
+  children: IFolderDocument[];
+  documentGroups: IDocumentGroup[];
+}
 
+export interface IDocumentGroup {
+  id: string;
+  clientId: string;
+  folderId: string;
+  title: string;
+  versions: IDocument[];
+  currentVersion?: IDocument;
 }
 
 type TreeElementsType = 'DOCUMENT' | 'FOLDER';
@@ -44,35 +54,43 @@ export interface DocumentNode extends BaseTreeNode {
   children: IDocumentTree[];
 }
 
-
-
-
-
-
-
-
-
 export interface IDocument {
-  "documentId": string,
-  "clientId": string,
-  "title": string,
-  "type": string,
-  "status": string[],
-  "createdAt": number,
-  "updatedAt": number,
-  "metadata": {
-    "version": number,
-    "language": string,
-    "confidential": boolean
-  },
-  "files": IFileReference[]
+  id: string;
+  groupId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  metadata: IMetadata;
+  files:   IFile[];
+  group: IDocumentGroup;
 }
 
+export interface IMetadata {
+  id: string;
+  version: number;
+  language: string;
+  confidential: boolean;
+  documentType: string;
+  issueDate?: Date;
+  expiryDate?: Date;
+  issuingAuthority?: string;
+  verificationStatus: VerificationStatus;
+}
 
-export interface IFileReference {
-  fileId: string;
+export interface IFile {
+  id: string;
+  documentId: string;
   fileName: string;
-  mineType: string;
+  mimeType: string;
+  sizeBytes: number;
+  storagePath: string;
+  checksum: string;
+  uploadedAt: Date;
+}
+
+export enum VerificationStatus {
+  Pending = "PENDING",
+  Verified = "VERIFIED",
+  Rejected = "REJECTED",
 }
 
 export interface ITreeElements{

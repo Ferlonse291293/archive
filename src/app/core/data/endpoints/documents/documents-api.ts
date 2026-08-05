@@ -14,8 +14,8 @@ export class DocumentsApi {
   getDocumentsTree(id: string): Observable<IDocumentTree>  {
     return this.apiService.get(`${environment.apiUrl}/documents/tree/${id}`)
   }
-  getDocumentDetails(id: string): Observable<IDocument> {
-
+  getDocument(id: string): Observable<IDocument> {
+    return this.apiService.get(`${environment.apiUrl}/documents/${id}`)
   }
 
 

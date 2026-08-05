@@ -1,7 +1,7 @@
 import {Actions, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
 import {firstValueFrom, map, take} from 'rxjs';
-import {IDocumentTree} from '../../data/endpoints/documents/documents-api.interface';
+import {IDocument, IDocumentTree} from '../../data/endpoints/documents/documents-api.interface';
 import {DocumentsActions} from '../../../state/documents/documents.actions';
 
 
@@ -35,6 +35,23 @@ export class DocumentsDataFacade implements IDocumentsDataFacade {
     );
   }
 
+  getDocument(documentId: string): Promise<IDocument> {
+    const requestId = crypto.randomUUID();
+    this.store.dispatch(DocumentsActions.getDocument.req({documentId: documentId}))
+
+    return firstValueFrom(
+      this.actions$.pipe(
+        ofType(DocumentsActions.getDocument.success, DocumentsActions.getDocument.failure),
+        take(1),
+        map((action: any) => {
+          if (action.type === DocumentsActions.getDocument.success.type) {
+            return action.document;
+          }
+          throw action.error;
+        })
+      )
+    );
+  }
 
 
 

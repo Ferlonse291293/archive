@@ -6,16 +6,18 @@ import {MatButton, MatIconButton} from '@angular/material/button';
 
 import {MatToolbar} from '@angular/material/toolbar';
 import {settingsActions, toggleSidebarActions} from '../../state/settings/settings.actions';
+import {LogoComponent} from '../../shared/components/logo/logo/logo.component';
+import {SidebarService} from '../sidebar/sidebar.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [
-    TranslatePipe,
     MatButton,
     MatIcon,
     MatToolbar,
     MatIconButton,
+    LogoComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -24,11 +26,7 @@ import {settingsActions, toggleSidebarActions} from '../../state/settings/settin
 export class HeaderComponent {
   private translate = inject(TranslateService);
   private store = inject(Store);
-
-  toggleSidebar(){
-    this.store.dispatch(settingsActions.toggleSidebarActions.toggle())
-  }
-
+  public sidebarService = inject(SidebarService)
   logout() {
 
   }

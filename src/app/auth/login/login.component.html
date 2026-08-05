@@ -1,26 +1,37 @@
 
+<header class="header-base header-promo ">
+<app-logo/>
+</header>
 
 
-<form [formGroup]="form">
+<main class="main-promo ">
+  <img class="img-promo" src="assets/images/promo.jpg">
 
-  <app-text-field
-    label="Email"
-    name="email"
-    [control] = "form.controls.email"
-  />
 
-  <app-password-field
-    label="Password"
-    [control] = "form.controls.password"
-  />
 
-  <button type="submit"
-          (click)="login()"
-          mat-stroked-button
-  >
-    Login
-  </button>
+  <form class="login-form" [formGroup]="form">
 
-  <p>  {{'ivan.sidorov@example.com'}}</p>
-  <p> {{'Ivan#Login9'}}</p>
-</form>
+    <app-text-field
+      label="Email"
+      name="email"
+      [control] = "form.controls.email"
+    />
+
+    <app-password-field
+      label="Password"
+      [control] = "form.controls.password"
+    />
+
+    <button type="submit"
+            (click)="login()"
+            mat-raised-button class="btn-green"
+    >
+      Login
+    </button>
+  </form>
+</main>
+
+
+
+
+<footer class="footer-promo"></footer>

@@ -8,5 +8,33 @@ body {
 }
 
 app-root {
+  //display: flex;
   height: 100%;
 }
+
+app-auth{
+  flex: 1 0 auto;
+  display: flex;
+}
+
+
+.mat-mdc-raised-button {
+  border-radius: 12px !important;
+  height: 44px;
+  padding: 0 20px;
+
+  font-weight: 600;
+  letter-spacing: .02em;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background-color .2s ease;
+}
+
+.mat-mdc-raised-button:active {
+  transform: translateY(1px);
+}
+
+
+

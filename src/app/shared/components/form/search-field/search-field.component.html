@@ -10,11 +10,9 @@
 
   <input
     #inputEl
-    class="input"
-    formControlName="query"
     [placeholder]="placeholder"
     [disabled]="disabled"
-    type="text"
+    [required]="required()"
   />
 
 </ng-container>

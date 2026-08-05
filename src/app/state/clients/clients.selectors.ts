@@ -1,24 +1,23 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {ClientsState} from './clients.state';
-import {user} from '../auth/auth.selectors';
 
 export const selectClientsState = createFeatureSelector<ClientsState>('clients')
 
-export const lastRequest = createSelector(
+export const lastIndividualRequest = createSelector(
   selectClientsState,
-  (state: ClientsState) => state.lastRequest
+  (state: ClientsState) => state.individuals.lastRequest
 );
 //
 
 
-export const currentClient = createSelector(
+export const currentIndividualClient = createSelector(
   selectClientsState,
-  (state: ClientsState) => state.currentClient
+  (state: ClientsState) => state.individuals.currentClient
 );
 
 
 
 export const ClientsSelectors = {
-  currentClient,
-  lastRequest
+  lastIndividualRequest,
+  currentIndividualClient
 };

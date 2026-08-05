@@ -19,11 +19,12 @@ export abstract class BaseFieldComponent implements OnInit{
   id= input<string>('');
   placeholder = input<string>('');
   name = input<string>('');
+  disabled = input<boolean>(false)
   control = input.required<FormControl<string>>();
   statusControl!: Signal<string>;
+  requiredMarked  = input< boolean | null>(null)
 
-
-  constructor() {
+    constructor() {
   }
 
   get errors(): string[]  {
@@ -33,6 +34,9 @@ export abstract class BaseFieldComponent implements OnInit{
     }
     return  Object.entries(errors).map(([key, value]) => this.validationErrorService.mapError(key, value))
   }
+
+
+
 
 
   required = computed(() => {

@@ -4,10 +4,11 @@
       {{ label() }}
     </mat-label>
   <mat-select
-    [value]="value"
     [multiple]="multiple()"
-    [disabled]="disabled"
-    (valueChange)="handle($event)"
+    [id] ="id()"
+    [formControl]="control()"
+    [required]="required()"
+    [attr.required] = "requiredMarked() ?? required()"
   >
 
     @for (option of options(); track option.value) {
@@ -17,16 +18,12 @@
       </mat-option>
 
     }
-
   </mat-select>
 
-    <mat-hint [hidden]="!hint()">
-      {{ hint() }}
-    </mat-hint>
 
 
-    <mat-error [hidden]="!error()">
-      {{ error() }}
+    <mat-error >
+      {{errors[0]}}
     </mat-error>
 
 

@@ -27,6 +27,7 @@ import { FocusMonitor } from '@angular/cdk/a11y';
 import { Subject } from 'rxjs';
 import {MatDivider} from '@angular/material/divider';
 import {MatOption, MatSelect} from '@angular/material/select';
+import {MatInput} from "@angular/material/input";
 
 
 
@@ -38,7 +39,7 @@ export interface FormFieldValue {
 @Component({
   selector: 'app-custom-form-field-control',
   standalone: true,
-  imports: [ReactiveFormsModule, MatSelect, MatDivider, MatOption],
+    imports: [ReactiveFormsModule, MatSelect, MatDivider, MatOption, MatInput],
   templateUrl: './search-field.component.html',
   providers: [
     {

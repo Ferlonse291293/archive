@@ -13,6 +13,10 @@ export class RouterService{
     this.router.navigate([key])
   }
 
+  redirectToUsePath(path: string){
+    this.router.navigate([path])
+  }
+
   redirectToWithParam(key: string, param: string){
     this.router.navigate([ `${key}/:${param}`])
   }

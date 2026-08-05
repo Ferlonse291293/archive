@@ -1,28 +1,34 @@
 import {createActionGroup,props} from '@ngrx/store';
-import {IClient, IGetClientsReq, IGetClientsRes} from '../../core/data/endpoints/clients/clients-api.interface';
+import {
+  IClientIndividualDetail,
+  IClientIndividualListItem,
+  IClientIndividualsFilter,
+  IClientPagination,
+  IGetClientsReq,
+} from '../../core/data/endpoints/clients/clients-api.interface';
 
 //////// LOADING
-export const getClients = createActionGroup({
-  source: 'CLIENTS GET CLIENTS',
+export const getIndividualClients = createActionGroup({
+  source: 'CLIENTS GET INDIVIDUAL CLIENTS',
   events: {
-     req : props<{ req: IGetClientsReq }>(),
-     success :  props<{ clientsRes:  IGetClientsRes }>(),
+     req : props<{ req: IGetClientsReq<IClientIndividualsFilter>}>(),
+     success :  props<{ clientsRes:  IClientPagination<IClientIndividualListItem> }>(),
      failure: props<{ error: string }>(),
   }
 },
 );
 
-export const getClient = createActionGroup({
-    source: 'CLIENTS GET CLIENT',
+export const getIndividualClient = createActionGroup({
+    source: 'CLIENTS GET INDIVIDUAL CLIENT',
     events: {
       req : props<{ id: string }>(),
-      success :  props<{ client: IClient }>(),
+      success :  props<{ client: IClientIndividualDetail }>(),
       failure: props<{ error: string }>(),
     }
   },
 );
 
 export const ClientsActions = {
-  getClients,
-  getClient
+  getIndividualClients,
+  getIndividualClient
 };

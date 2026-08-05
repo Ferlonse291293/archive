@@ -1,7 +1,6 @@
-import {BaseController} from '../../core/base/base-controller';
-import {IBaseController} from '../../core/model';
-import {clientConfig} from './configs/client-config-controller';
-import {IConfigController} from '../../core/model/interfaces/config-controller.interface';
+import {BaseController, IBaseController, IConfigController} from '../../core/base/base-controller';
+
+
 import {Injector} from '@angular/core';
 
 export class ClientController extends BaseController implements IBaseController{

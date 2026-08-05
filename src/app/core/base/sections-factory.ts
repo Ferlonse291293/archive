@@ -1,6 +1,5 @@
-import {ISectionConfig} from '../model/interfaces/section-config.interface';
-import {BaseSection} from './base-section';
-import {IBaseSection} from '../model/interfaces/base-section.interface';
+
+import {BaseSection, IBaseSection, ISectionConfig} from './base-section';
 import {SectionsKey, SectionsKeys} from '../model/sections-keys.namespace';
 
 export class SectionsFactory {

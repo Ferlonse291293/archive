@@ -1,16 +1,16 @@
 
 
-<mat-toolbar >
+<mat-toolbar class="header-base">
 
 
   <button mat-icon-button
-          (click)="toggleSidebar()"
+          (click)="sidebarService.toggleSidebar()"
   >
 
     <mat-icon>menu</mat-icon>
   </button>
 
-  <span class="logo"><h1>{{ 'MENU.HOME' | translate }}</h1></span>
+<app-logo></app-logo>
 
 
   <span class="spacer"></span>

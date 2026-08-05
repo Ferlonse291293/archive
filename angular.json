@@ -20,7 +20,7 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "stylePreprocessorOptions": {
-              "includePaths": ["src/styles"]
+              "includePaths": ["src/styles", "src/styles/components"]
             },
             "outputPath": "dist/archive",
             "index": "src/index.html",

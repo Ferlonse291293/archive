@@ -1,15 +1,25 @@
-<div class="plugin-grid">
+<div class="feature-grid">
   @for( feature of features ; track feature.title){
-    <mat-card class="plugin-card"
+    <mat-card class="feature-card"
       (click)="openFeature(feature.route)"
     >
-      <mat-card-title>
+
+      <mat-card-title class="feature-card__title">
+<!--        <mat-icon class="feature-card__icon">{{ feature.icon }}</mat-icon>-->
         {{ feature.title }}
       </mat-card-title>
-      <mat-card-subtitle>
-        {{ feature.description }}
-      </mat-card-subtitle>
-      <mat-icon>{{ feature.icon }}</mat-icon>
+
+
+      <mat-card-content>
+        <img class="feature-card__img"  mat-card-image [src]="feature.imageSrc" alt="Photo of a Shiba Inu">
+<!--        <mat-card-subtitle>-->
+<!--          {{ feature.description }}-->
+<!--        </mat-card-subtitle>-->
+
+      </mat-card-content>
+
+
+
     </mat-card>
   }
 </div>

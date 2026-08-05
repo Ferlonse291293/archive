@@ -1,14 +1,10 @@
-
 <app-client-search-form
   (onSubmit) = "getClients($event)"
-
+  [departments] = "departmentsOptions$ | async"
 >
-
 </app-client-search-form>
-
-
 <app-table-dynamic
-[columns] = "columns()"
-[dataSource] = "dataSource"
-(clickRow) = "getClientDetails($event)"
-></app-table-dynamic>
+  [dataGridController] = "dataGridController"
+  (clickRow) = "getClientDetails($event)"
+/>
+<app-paginator [paginatorController] = "dataGridController.paginator"/>

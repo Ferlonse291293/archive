@@ -25,17 +25,36 @@ export const changeLanguageActions = createActionGroup({
 },);
 
 export const toggleSidebarActions = createActionGroup({
-  source: 'SETTINGS SIDEBAR',
+  source: 'SETTINGS SIDEBAR TOGGLE',
   events: {
     toggle : emptyProps(),
   }
 },
   );
 
+export const changeSidebarActions = createActionGroup({
+    source: 'SETTINGS SIDEBAR CHANGE IS OPEN',
+    events: {
+     change : props<{ v: boolean }>(),
+    }
+  },
+);
+
+export const changeDisableSidebarActions = createActionGroup({
+    source: 'SETTINGS SIDEBAR TOGGLE DISABLE',
+    events: {
+      change : props<{ v: boolean }>(),
+    }
+  },
+);
+
+
 export const settingsActions = {
   onMainLoadingActions,
   changeLanguageActions,
-  toggleSidebarActions
+  toggleSidebarActions,
+  changeSidebarActions,
+  changeDisableSidebarActions
 };
 
 

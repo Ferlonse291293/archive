@@ -1,14 +1,27 @@
-import {IBaseController} from '../model';
-import {IBaseSection} from '../model/interfaces/base-section.interface';
-import {IConfigController} from '../model/interfaces/config-controller.interface';
+
+
 import {Injector} from '@angular/core';
-import { GlobalServiceKey} from '../../shared/consts/global-services';
 import {SectionsFactory} from './sections-factory';
-import {ISectionConfig} from '../model/interfaces/section-config.interface';
+
 
 import {DataFacadeMap, StateFacadeMap, StoreFacadeKey} from '../facades/store-facade.registry';
 import {StoreFacadeService} from '../facades/store-facade.service';
 import {SectionsKey} from '../model/sections-keys.namespace';
+import {IBaseSection, ISectionConfig} from './base-section';
+
+
+export interface IBaseController {
+  getSection(key:  SectionsKey): IBaseSection | undefined
+  params: unknown
+  destroy(): void
+}
+
+export interface IConfigController{
+  sections :  ISectionConfig[]
+  data?: StoreFacadeKey[]
+  state?: StoreFacadeKey[]
+}
+
 
 
 export class BaseController implements IBaseController {
@@ -25,17 +38,18 @@ export class BaseController implements IBaseController {
       if(config.data) this.initData(config.data, injector)
       if(config.state)this.initState(config.state, injector)
       this.initSections(config.sections)
-
   }
   public destroy(){
 
   }
 
   private initSections(sectionConfigs: ISectionConfig[] ){
+
     this.sections = SectionsFactory.createSections(sectionConfigs.map(conf => {
          return {...conf ,
            data:  Object.fromEntries( conf.data.map((key: StoreFacadeKey)  => [key, this.data[key]]) ),
-           state: Object.fromEntries( conf.state.map((key: StoreFacadeKey) => [key, this.state[key]]))
+           state: Object.fromEntries( conf.state.map((key: StoreFacadeKey) => [key, this.state[key]])),
+           engines: conf.engines
          }
       })
     )
@@ -59,6 +73,10 @@ export class BaseController implements IBaseController {
       keys.map(k => [k, sFS.getStateFacade(k)])
     )  as Partial<StateFacadeMap>;
   }
+
+
+
+
 
   getSection(key:  SectionsKey): IBaseSection | undefined{
     if(this.sections[key]){

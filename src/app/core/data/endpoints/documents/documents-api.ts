@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../../../environments/environment';
 import {inject, Injectable} from '@angular/core';
 import {ApiService} from '../../api/api.service';
-import {IDocumentTree} from './documents-api.interface';
+import {IDocument, IDocumentTree} from './documents-api.interface';
 
 
 @Injectable({providedIn: 'root'})
@@ -12,7 +12,10 @@ import {IDocumentTree} from './documents-api.interface';
 export class DocumentsApi {
   private apiService = inject<ApiService>(ApiService)
   getDocumentsTree(id: string): Observable<IDocumentTree>  {
-    return this.apiService.get(`${environment.apiUrl}/documents/${id}`)
+    return this.apiService.get(`${environment.apiUrl}/documents/tree/${id}`)
+  }
+  getDocumentDetails(id: string): Observable<IDocument> {
+
   }
 
 

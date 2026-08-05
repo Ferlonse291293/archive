@@ -1,0 +1,5 @@
+@use 'color';
+
+ .header-base{
+  background: linear-gradient(to bottom, color.$black-blue-dark, color.$black-blue-middle);
+}

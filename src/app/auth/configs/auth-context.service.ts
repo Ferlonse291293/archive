@@ -2,7 +2,8 @@ import {inject, Injectable, Injector, signal,} from '@angular/core';
 import {AuthController} from '../auth-controller';
 import {authConfig} from './auth-config';
 import {SectionsKey} from '../../core/model/sections-keys.namespace';
-import {IBaseSection} from '../../core/model/interfaces/base-section.interface';
+import {IBaseSection} from '../../core/base/base-section';
+
 
 @Injectable({providedIn: 'root'})
 export class AuthContextService{

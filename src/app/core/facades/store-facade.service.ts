@@ -8,6 +8,8 @@ import {ClientStateFacade} from './state/client-state-facade';
 import {ClientDataFacade} from './data/client-data-facade';
 import {DocumentsDataFacade} from './data/documents-data.facade';
 import {DocumentStateFacade} from './state/document-state.facade';
+import {OptionsStateFacade} from './state/options-state-facade';
+import {OptionsDataFacade} from './data/options-data-facade';
 
 @Injectable({providedIn: 'root'})
 export class StoreFacadeService {
@@ -20,13 +22,15 @@ export class StoreFacadeService {
     this.dataFacades = {
       AUTH: new AuthDataFacade(this.actions$, this.store),
       CLIENTS: new ClientDataFacade(this.actions$, this.store),
-      DOCUMENTS: new DocumentsDataFacade(this.actions$, this.store)
+      DOCUMENTS: new DocumentsDataFacade(this.actions$, this.store),
+      OPTIONS: new OptionsDataFacade(this.actions$, this.store)
     };
 
     this.stateFacades = {
       AUTH: new AuthStateFacade(this.store),
       CLIENTS: new ClientStateFacade(this.store),
-      DOCUMENTS: new DocumentStateFacade(this.store)
+      DOCUMENTS: new DocumentStateFacade(this.store),
+      OPTIONS: new OptionsStateFacade( this.store)
     };
   }
 

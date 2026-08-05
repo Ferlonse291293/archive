@@ -8,12 +8,9 @@
     [formControl]="control()"
     [placeholder]="placeholder()"
     [required]="required()"
+    [attr.required]="requiredMarked() ?? required()"
   />
-  @for (err of errors ; track err ){
-    <mat-error >
-      {{err}}
+    <mat-error>
+      {{errors[0]}}
     </mat-error>
-  }
-
-
 </mat-form-field>

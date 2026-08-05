@@ -30,7 +30,12 @@ export const authReducer = createReducer(
     isLoading: v
   })),
   on(AuthActions.refreshToken.success, (state) => state),
-  on(AuthActions.refreshToken.failure, (state) => state)
+  on(AuthActions.refreshToken.failure, (state) => state),
+
+// Logout
+  on(AuthActions.logout.req, (state) => state),
+  on(AuthActions.logout.success, (state) => state),
+  on(AuthActions.logout.failure, (state) => state)
 
 
 

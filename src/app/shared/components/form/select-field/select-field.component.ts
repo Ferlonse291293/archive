@@ -1,26 +1,25 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   input,
 } from '@angular/core';
 
 import {
   FormsModule,
-  NG_VALUE_ACCESSOR,
+ ReactiveFormsModule,
 } from '@angular/forms';
 
-import { MatOptionModule } from '@angular/material/core';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
-import {AppFieldComponent} from '../field/field.component';
 import {BaseFieldComponent} from '../base-field.directive';
+import { MatInputModule} from '@angular/material/input';
+import {MatOption, MatSelect} from '@angular/material/select';
 
 
 
 type SelectValue = string | number;
 
-type SelectOption = {
+export type SelectOption = {
   label: string;
   value: SelectValue;
 };
@@ -29,38 +28,19 @@ type SelectOption = {
   selector: 'app-select-field',
   standalone: true,
   imports: [
-    FormsModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    MatOptionModule,
-    AppFieldComponent,
+    MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatSelect, MatOption,
   ],
+  styleUrl: '../style-form.scss',
   templateUrl: './select-field.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => AppSelectFieldComponent),
-      multi: true,
-    },
-  ],
+  providers: [],
 })
-export class AppSelectFieldComponent
-  extends BaseFieldComponent<SelectValue | SelectValue[]> {
-
+export class AppSelectFieldComponent extends BaseFieldComponent{
   multiple = input(false);
-
   options = input<SelectOption[]>([]);
-
-  handle(value: SelectValue | SelectValue[]): void {
-    this.value = value;
-    this.onChange(value);
+  constructor() {
+    super();
   }
+
+
 }
-/*
-  <app-select-field
-    label="Role"
-    formControlName="role"
-    [options]="roles"
-  />
- */

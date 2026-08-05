@@ -1,11 +1,9 @@
 import {inject, Injectable} from '@angular/core';
 import {Actions, createEffect, ofType} from '@ngrx/effects';
-import {AuthApi} from '../../core/data/endpoints/auth.api';
+import {AuthApi} from '../../core/data/endpoints/auth/auth.api';
 import {AuthActions} from './auth.actions';
 import {catchError, map, of, switchMap} from 'rxjs';
 import {SecurityService} from '../../core/services/security.service';
-
-
 
 @Injectable()
 export class AuthEffects {
@@ -46,6 +44,41 @@ export class AuthEffects {
           ),
           catchError(error =>
             of(AuthActions.profile.failure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  refreshToken$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.refreshToken.req),
+      switchMap((action) =>
+        this.authApi.refresh().pipe(
+          map(res => {
+              this.securityService.setCsrfToken(res.csrfToken)
+              return  AuthActions.refreshToken.success()
+            }
+          ),
+          catchError(error =>
+            of(AuthActions.refreshToken.failure({ error }))
+          )
+        )
+      )
+    )
+  );
+
+  logout$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.logout.req),
+      switchMap((action) =>
+        this.authApi.logout().pipe(
+          map(res => {
+              return  AuthActions.logout.success()
+            }
+          ),
+          catchError(error =>
+            of(AuthActions.logout.failure({ error }))
           )
         )
       )

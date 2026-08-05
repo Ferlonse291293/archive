@@ -9,6 +9,7 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": false,
     "noImplicitReturns": false,
+    "noImplicitAny":  false,
     "noFallthroughCasesInSwitch": false,
     "skipLibCheck": true,
     "isolatedModules": true,

@@ -35,8 +35,11 @@ export class SecurityService {
    return  this.csrfToken ;
   }
 
+  clearCsrfToken(): void {
+  this.csrfToken = '' ;
+  }
+
   isUserAuthenticated(): boolean{
-    console.log(this.csrfToken !== '' && this.permissions.size)
    return this.csrfToken !== '' && this.permissions.size !== 0
   }
 }

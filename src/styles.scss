@@ -3,6 +3,7 @@
 @use "styles/color";
 @use "styles/font";
 @use 'styles/components/buttons';
+@use 'styles/components/ui';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

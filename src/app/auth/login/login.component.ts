@@ -7,11 +7,12 @@ import { MatInputModule, } from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {TextFieldComponent} from '../../shared/components/form/text-field/text-field.component';
 import {MatButtonModule} from '@angular/material/button';
-import {IAuthStateFacade} from '../../core/facades/data/auth-data-facade';
-import {ReqLogin} from '../../core/data/endpoints/auth-api.interface';
+
+import {ReqLogin} from '../../core/data/endpoints/auth/auth-api.interface';
 import {RouterService} from '../../core/services/router.service';
 import {NavLinks} from '../../core/router/navigation';
 import {DataFacadeMap} from '../../core/facades/store-facade.registry';
+import {LogoComponent} from '../../shared/components/logo/logo/logo.component';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +24,7 @@ import {DataFacadeMap} from '../../core/facades/store-facade.registry';
     MatInputModule,
     TextFieldComponent,
     MatButtonModule,
+    LogoComponent,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -38,8 +40,8 @@ export class LoginComponent {
 
 
   public form = this.fb.group({
-    email: this.fb.nonNullable.control('' , [Validators.required, Validators.minLength(8), Validators.email]),
-    password: this.fb.nonNullable.control('' , [Validators.required]),
+    email: this.fb.nonNullable.control('maria.ivanova@example.com' , [Validators.required, Validators.minLength(8), Validators.email]),
+    password: this.fb.nonNullable.control('Qwerty#2026' , [Validators.required]),
   });
 
 
@@ -48,15 +50,13 @@ export class LoginComponent {
     const req: ReqLogin = {email: this.form.controls.email.value, password: this.form.controls.password.value}
     this.data.AUTH!.login(req)
       .then(res => {
-        setTimeout(() => {
           this.isLoginDisabled = false
-          this.data.AUTH!.getProfile().then(res => {
-            this.routerService.redirectTo(NavLinks.HOME)
+          Promise.all([ this.data.AUTH!.getProfile(), this.data.OPTIONS!.getOptions()] ).then(() => {
+          this.routerService.redirectTo(NavLinks.HOME)
           })
-        }, 50)
+      }).catch(err => {
+      this.isLoginDisabled = false
+      console.error('Login failed', err)
     })
-
   }
-
-
 }

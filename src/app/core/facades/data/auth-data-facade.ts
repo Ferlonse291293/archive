@@ -1,7 +1,7 @@
 import { Actions } from '@ngrx/effects';
 import {Store} from '@ngrx/store';
 import {AuthActions} from '../../../state/auth/auth.actions';
-import {ReqLogin} from '../../data/endpoints/auth-api.interface';
+import {ReqLogin} from '../../data/endpoints/auth/auth-api.interface';
 import {ofType} from '@ngrx/effects';
 import {filter, firstValueFrom, map, take} from 'rxjs';
 
@@ -37,7 +37,7 @@ export class AuthDataFacade implements IAuthStateFacade {
             return true;
           }
 
-          return   action.error;
+          throw action.error;;
         })
       )
     );
@@ -58,13 +58,30 @@ export class AuthDataFacade implements IAuthStateFacade {
             return action.user;
           }
 
-          return  action.error ;
+          throw action.error;;
         })
       )
     );
   }
 
-  refresh(){}
+  refresh(){
+    const requestId = crypto.randomUUID();
+    this.store.dispatch(AuthActions.refreshToken.req())
+
+    return this.actions$.pipe(
+        ofType(AuthActions.refreshToken.success, AuthActions.refreshToken.failure),
+        take(1),
+        map((action: any) => {
+          if (action.type === AuthActions.refreshToken.success.type) {
+            return true;
+          }
+
+          throw action.error;;
+        })
+
+    )
+
+  }
 
 
 

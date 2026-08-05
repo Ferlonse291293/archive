@@ -1,10 +1,12 @@
+@use "ui";
+@use "color";
+
 
 
 .spacer {
   flex: 1 1 auto;
 }
-
-.logo {
-  margin-left: 8px;
-  font-weight: 500;
+mat-icon{
+  color: color.$green-active-middle;
 }
+

@@ -8,7 +8,7 @@ import {IDocumentTree} from '../../../../core/data/endpoints/documents/documents
 
 
 function flattenNodes(nodes: IDocumentTree[]): IDocumentTree[] {
-  const flattenedNodes = [];
+  const flattenedNodes: IDocumentTree[] = [];
   for (const node of nodes) {
     flattenedNodes.push(node);
     if (node.children) {

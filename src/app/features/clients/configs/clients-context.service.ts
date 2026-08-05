@@ -1,9 +1,10 @@
 import {inject, Injectable, Injector, signal} from '@angular/core';
 import {SectionsKey} from '../../../core/model/sections-keys.namespace';
-import {IBaseSection} from '../../../core/model/interfaces/base-section.interface';
+
 import {ClientController} from '../client-controller';
 import {clientConfig} from './client-config-controller';
 import {RouterService} from '../../../core/services/router.service';
+import {IBaseSection} from '../../../core/base/base-section';
 
 
 @Injectable({providedIn: 'root'})

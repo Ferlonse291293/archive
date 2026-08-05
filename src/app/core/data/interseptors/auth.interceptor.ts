@@ -13,7 +13,6 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(
     req.clone({
-      withCredentials: true,
       setHeaders: {
         'x-csrf-token': securityService.getCsrfToken()
       }

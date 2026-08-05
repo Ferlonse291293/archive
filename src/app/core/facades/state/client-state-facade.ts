@@ -1,12 +1,12 @@
 import {Store} from '@ngrx/store';
-import {IClient} from '../../data/endpoints/clients/clients-api.interface';
+import { IClientIndividualDetail} from '../../data/endpoints/clients/clients-api.interface';
 import {ClientsSelectors} from '../../../state/clients/clients.selectors';
 import {firstValueFrom, Observable} from 'rxjs';
 
 
 export interface IClientStateFacade {
-  getCurrentUClient$(): Observable<IClient>
-  getCurrentUClient(): Promise<IClient>
+  getCurrentIndividualClient$(): Observable<IClientIndividualDetail | null>
+  getCurrentIndividualClient(): Promise<IClientIndividualDetail | null>
 
 }
 
@@ -16,20 +16,17 @@ export class ClientStateFacade implements IClientStateFacade{
     private store: Store,
   ) {
   }
-
-
-
-  getCurrentUClient$(): Observable<IClient> {
-   return  this.store.select(ClientsSelectors.currentClient)
+  getCurrentIndividualClient$(): Observable<IClientIndividualDetail | null> {
+   return  this.store.select(ClientsSelectors.currentIndividualClient)
   }
 
-  getCurrentUClient(): Promise<IClient> {
-    return firstValueFrom(this.store.select(ClientsSelectors.currentClient))
+  getCurrentIndividualClient(): Promise<IClientIndividualDetail | null> {
+    return firstValueFrom(this.store.select(ClientsSelectors.currentIndividualClient))
   }
 
-  getLatsRequest(){
-    return firstValueFrom(this.store.select(ClientsSelectors.lastRequest))
-  }
+  // getLatsRequest(): Promise<IGetClientIndividualsReq> {
+  //   return firstValueFrom(this.store.select(ClientsSelectors.lastIndividualRequest))
+  // }
 
 
 }

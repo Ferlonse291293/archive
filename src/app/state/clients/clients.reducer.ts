@@ -9,21 +9,17 @@ import {initialClientsState} from './clients.state';
 export const clientsReducer = createReducer(
   initialClientsState,
   // GET CLIENTS
-  on(ClientsActions.getClients.req, (state) => state),
-  on(ClientsActions.getClients.success, (state, action) => ({
+  on(ClientsActions.getIndividualClients.req, (state) => state),
+  on(ClientsActions.getIndividualClients.success, (state, action) => ({
     ...state
   })),
-  on(ClientsActions.getClients.failure, (state) => state),
+  on(ClientsActions.getIndividualClients.failure, (state) => state),
 
   // GET CLIENT
-  on(ClientsActions.getClient.req, (state) => state),
-  on(ClientsActions.getClient.success, (state, action) => ({
+  on(ClientsActions.getIndividualClient.req, (state) => state),
+  on(ClientsActions.getIndividualClient.success, (state, action) => ({
     ...state,
-    currentClient: action.client
+    individuals : {...state.individuals ,  currentClient: action.client }
   })),
-  on(ClientsActions.getClient.failure, (state) => state),
-
-
-
-
+  on(ClientsActions.getIndividualClient.failure, (state) => state),
 );

@@ -1,7 +1,7 @@
-import {BaseController} from '../core/base/base-controller';
-import {IBaseController} from '../core/model';
+import {BaseController, IBaseController, IConfigController} from '../core/base/base-controller';
+
 import {Injector} from '@angular/core';
-import {IConfigController} from '../core/model/interfaces/config-controller.interface';
+
 
 
 

@@ -19,3 +19,128 @@
     background: rgba(173, 173, 173, 0.27);
   }
 }
+
+.btn-base{
+
+  &:disabled {
+    opacity: 0.5;
+  }
+  transition: .2s ease;
+}
+
+
+.btn-blue {
+  @extend .btn-base;
+  background: #2563eb !important;
+  color: white !important;
+
+  box-shadow:
+    0 4px 12px rgba(37, 99, 235, .25),
+    0 2px 4px rgba(37, 99, 235, .15);
+
+
+}
+
+.btn-blue:hover {
+  background: #1d4ed8 !important;
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, .35);
+}
+
+
+.btn-yellow {
+  @extend .btn-base;
+  background: #f59e0b !important;
+  color: #111827 !important;
+
+  box-shadow:
+    0 4px 12px rgba(245, 158, 11, .25),
+    0 2px 4px rgba(245, 158, 11, .15);
+
+
+}
+
+.btn-yellow:hover {
+  background: #d97706 !important;
+
+  box-shadow:
+    0 8px 20px rgba(245, 158, 11, .35);
+}
+
+.btn-red {
+  @extend .btn-base;
+  background: #dc2626 !important;
+  color: white !important;
+
+  box-shadow:
+    0 4px 12px rgba(220, 38, 38, .25),
+    0 2px 4px rgba(220, 38, 38, .15);
+
+}
+
+.btn-red:hover {
+  background: #b91c1c !important;
+
+  box-shadow:
+    0 8px 20px rgba(220, 38, 38, .35);
+}
+
+.btn-gray {
+  @extend .btn-base;
+  background: #6b7280 !important;
+  color: white !important;
+
+  box-shadow:
+    0 4px 12px rgba(107, 114, 128, .2),
+    0 2px 4px rgba(107, 114, 128, .1);
+
+}
+
+.btn-gray:hover {
+  background: #4b5563 !important;
+}
+
+.btn-black {
+  @extend .btn-base;
+  background: #111827 !important;
+  color: white !important;
+
+  box-shadow:
+    0 4px 12px rgba(17, 24, 39, .25),
+    0 2px 4px rgba(17, 24, 39, .15);
+
+}
+
+.btn-black:hover {
+  background: #030712 !important;
+
+  box-shadow:
+    0 8px 20px rgba(17, 24, 39, .35);
+}
+
+.btn-green {
+  @extend .btn-base;
+
+  background: #16a34a !important;
+  color: white !important;
+
+  box-shadow:
+    0 4px 12px rgba(22, 163, 74, .25),
+    0 2px 4px rgba(22, 163, 74, .15);
+
+
+}
+
+.btn-green:hover {
+  background: #15803d !important;
+
+  box-shadow:
+    0 8px 20px rgba(22, 163, 74, .35);
+}
+
+.btn-green:active {
+  transform: translateY(1px);
+}
+

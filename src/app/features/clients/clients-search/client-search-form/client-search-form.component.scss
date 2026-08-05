@@ -1,0 +1,30 @@
+
+form{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  align-items: stretch;
+}
+app-text-field{
+  max-width: 300px;
+}
+
+
+.form-buttons{
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  grid-column: 1 / -1;
+  height: 50px;
+}
+
+button:first-child{
+  margin-left: 0;
+}
+
+button{
+  border-radius: 0 ;
+  max-width: 100px;
+  margin-left: 10px;
+}

@@ -1,16 +1,23 @@
 <div class="shell">
 
-<app-header class="header" />
+<app-header class="header-base" />
 
   <main class="main">
 
     <mat-sidenav-container class="container">
 
-      <mat-sidenav class="sidebar" mode="side" [opened] = "isOpenedSidebar | async">
+      <mat-sidenav clickOutside
+                   (clickOutside)="sidebarService.clickOutside()"
+                   [enabled]="sidebarService.isOpen()"
+                   mode="side" [opened] = "sidebarService.isOpen() "
+                   class="sidebar"
+
+      >
         <app-sidebar-list />
       </mat-sidenav>
 
       <mat-sidenav-content class="content">
+        <app-breadcrumbs />
         <router-outlet></router-outlet>
       </mat-sidenav-content>
 

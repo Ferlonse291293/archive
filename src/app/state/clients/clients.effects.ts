@@ -11,34 +11,34 @@ export class ClientsEffects {
   private actions$ = inject(Actions);
   private clientApi = inject(ClientsApi);
 
-  getClients$ = createEffect(() =>
+  getIndividualClients$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ClientsActions.getClients.req),
+      ofType(ClientsActions.getIndividualClients.req),
       switchMap((action) =>
-        this.clientApi.getClients(action.req).pipe(
+        this.clientApi.getIndividualClients(action.req ).pipe(
           map(res => {
-             return  ClientsActions.getClients.success({clientsRes: res})
+             return  ClientsActions.getIndividualClients.success({clientsRes: res})
           }
           ),
           catchError(error =>
-            of(ClientsActions.getClients.failure({ error }))
+            of(ClientsActions.getIndividualClients.failure({ error }))
           )
         )
       )
     )
   );
 
-  getClient$ = createEffect(() =>
+  getIndividualClient$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(ClientsActions.getClient.req),
+      ofType(ClientsActions.getIndividualClient.req),
       switchMap((action) =>
-        this.clientApi.getClient(action.id).pipe(
+        this.clientApi.getIndividualClient(action.id).pipe(
           map(res => {
-              return  ClientsActions.getClient.success({client: res})
+              return  ClientsActions.getIndividualClient.success({client: res})
             }
           ),
           catchError(error =>
-            of(ClientsActions.getClient.failure({ error }))
+            of(ClientsActions.getIndividualClient.failure({ error }))
           )
         )
       )

@@ -1,0 +1,28 @@
+<mat-nav-list >
+
+  <div class="sidebar-actions">
+
+    <button mat-icon-button class="sidebar-actions__btn" (click)="sidebarService.onDisableToggleSidebar()">
+      @if (sidebarService.isDisabled()){
+        <mat-icon >lock</mat-icon>
+      } @else {
+        <mat-icon>lock_open</mat-icon>
+      }
+
+    </button>
+  </div>
+
+<!--  [routerLink]="item.link"-->
+  @for (item of sidebarItems; track item ){
+
+    <a mat-list-item
+
+       (click)="redirectTo(item.link)"
+    >
+      <mat-icon>{{item?.iconName}}</mat-icon>
+      <span class="bar-nav-btn__text">{{item?.name}}</span>
+    </a>
+
+  }
+
+</mat-nav-list>

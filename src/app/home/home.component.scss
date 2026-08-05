@@ -1,12 +1,10 @@
 .shell {
   display: grid;
-
   grid-template-rows: auto 1fr auto;
   grid-template-areas:
     "header"
     "main"
     "footer";
-
   height: 100%;
 }
 
@@ -24,14 +22,16 @@
   grid-area: footer;
 }
 
-/* MATERIAL */
+
 .container {
   height: 100%;
-  background: antiquewhite;
+
 }
 
 .sidebar {
   width: 260px;
+  border-radius: 0;
+  box-shadow: 0 0 12px #c4c4c4;
 }
 
 .content {

@@ -1,11 +1,21 @@
 {
-  "MENU": {
-    "HOME": "Archive",
-    "CLIENTS": "Clients",
-    "SETTINGS": "Settings",
-    "DOCUMENTS": "Documents"
+  "UI": {
+    "LOGO": "Archive"
   },
-
+  "ROUTES": {
+    "HOME": "Home",
+    "AUTH" : "Auth",
+    "LOGIN": "Login",
+    "FEATURES_HUB": "Features hub",
+    "ARCHIVE": "Archive",
+    "CLIENTS": "Clients",
+    "CLIENTS_SEARCH": "Clients search",
+    "CLIENT_DOCUMENTS": "Client documents",
+    "DATA": "Data",
+    "DOCUMENTS": "Documents",
+    "SETTINGS": "Settings",
+    "ANALYTICS": "Analytics"
+  },
   "ERROR_VALIDATORS": {
     "CHARACTERS": "characters",
     "REQUIRED": "Field cannot be empty",

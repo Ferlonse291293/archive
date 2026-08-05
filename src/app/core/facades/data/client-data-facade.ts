@@ -2,12 +2,15 @@ import {Actions, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
 import {firstValueFrom, map, take} from 'rxjs';
 import {ClientsActions} from '../../../state/clients/clients.actions';
-import {IClient, IGetClientsReq, IGetClientsRes} from '../../data/endpoints/clients/clients-api.interface';
+import {
+  IClientIndividualDetail, IClientIndividualListItem, IClientIndividualsFilter,
+  IClientPagination, IGetClientsReq,
+} from '../../data/endpoints/clients/clients-api.interface';
 
 
 export interface IClientDataFacade {
-  getClient(id: string): Promise<IClient>
-  getClients(req: IGetClientsReq): Promise<IGetClientsRes>
+  getIndividualClient(id: string): Promise<IClientIndividualDetail>
+  getIndividualClients(req: IGetClientsReq<IClientIndividualsFilter>): Promise<IClientPagination<IClientIndividualListItem>>
 }
 
 export class ClientDataFacade implements IClientDataFacade {
@@ -17,39 +20,36 @@ export class ClientDataFacade implements IClientDataFacade {
   ) {
   }
 
-  getClient(id: string): Promise<IClient> {
+  getIndividualClient(id: string): Promise<IClientIndividualDetail> {
     const requestId = crypto.randomUUID();
-    this.store.dispatch(ClientsActions.getClient.req({id: id}))
+    this.store.dispatch(ClientsActions.getIndividualClient.req({id: id }))
 
     return firstValueFrom(
       this.actions$.pipe(
-        ofType(ClientsActions.getClient.success, ClientsActions.getClient.failure),
+        ofType(ClientsActions.getIndividualClient.success, ClientsActions.getIndividualClient.failure),
         take(1),
         map((action: any) => {
-          if (action.type === ClientsActions.getClient.success.type) {
+          if (action.type === ClientsActions.getIndividualClient.success.type) {
             return action.client;
           }
-
-          return   action.error;
+          throw  action.error;
         })
       )
     );
   }
 
-  getClients(req: IGetClientsReq): Promise<IGetClientsRes> {
-
-    this.store.dispatch(ClientsActions.getClients.req({req: req}))
+  getIndividualClients(req: IGetClientsReq<IClientIndividualsFilter>): Promise<IClientPagination<IClientIndividualListItem>> {
+    this.store.dispatch(ClientsActions.getIndividualClients.req({req: req }))
 
     return firstValueFrom(
       this.actions$.pipe(
-        ofType(ClientsActions.getClients.success, ClientsActions.getClients.failure),
+        ofType(ClientsActions.getIndividualClients.success, ClientsActions.getIndividualClients.failure),
         take(1),
         map((action: any) => {
-          if (action.type ===ClientsActions.getClients.success.type) {
+          if (action.type ===ClientsActions.getIndividualClients.success.type) {
             return action.clientsRes;
           }
-
-          return   action.error;
+          throw  action.error;
         })
       )
     );

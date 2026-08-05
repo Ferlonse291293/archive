@@ -1,9 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {Router} from '@angular/router';
-import {MatCard, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
+
+import {MatCard, MatCardContent, MatCardImage, MatCardSubtitle, MatCardTitle} from '@angular/material/card';
 import {MatIcon} from '@angular/material/icon';
 import {RouterService} from '../../core/services/router.service';
 import {NavLinks} from '../../core/router/navigation';
+import {APP_ROUTES} from '../../core/router/routes';
+import {TranslateService} from '@ngx-translate/core';
 
 
 @Component({
@@ -12,8 +14,8 @@ import {NavLinks} from '../../core/router/navigation';
   imports: [
     MatCard,
     MatCardTitle,
-    MatCardSubtitle,
-    MatIcon
+    MatCardImage,
+    MatCardContent
   ],
   templateUrl: './features-hub.component.html',
   styleUrl: './features-hub.component.scss',
@@ -21,10 +23,28 @@ import {NavLinks} from '../../core/router/navigation';
 })
 export class FeaturesHubComponent {
   private routerService = inject(RouterService)
+  private translate = inject(TranslateService);
   features = [
-    { title: 'Analytics', description: 'Статистика', icon: 'bar_chart', route: '/analytics' },
-    { title: 'Clients', description: 'Пользователи', icon: 'people', route: NavLinks.CLIENTS },
-    { title: 'Settings', description: 'Настройки', icon: 'settings', route: '/settings' }
+    { title: this.translate.instant(APP_ROUTES.ANALYTICS.name) ,
+      description: 'Статистика',
+      imageSrc: "assets/images/analytics.svg",
+      icon: 'bar_chart',
+      route:  NavLinks.ANALYTICS },
+    { title: this.translate.instant(APP_ROUTES.CLIENTS.name),
+      description: 'Clients',
+      imageSrc: "assets/images/individuals.svg",
+      icon: 'people',
+      route: NavLinks.CLIENTS },
+    { title: this.translate.instant(APP_ROUTES.SETTINGS.name),
+      description: 'Настройки',
+      imageSrc: "assets/images/settings.svg",
+      icon: 'settings',
+      route:  NavLinks.SETTING },
+    { title: this.translate.instant(APP_ROUTES.DOCUMENTS.name),
+      description: 'Настройки',
+      imageSrc: "assets/images/documents.svg",
+      icon: 'documents',
+      route: NavLinks.DOCUMENTS }
   ];
   openFeature(route: string) {
     this.routerService.redirectTo(route);

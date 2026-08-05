@@ -1,59 +1,79 @@
 <form [formGroup]="form">
   <app-text-field
-   [label]="'CLIENTS.CLIENT_SEARCH.FIRST_NAME' | translate"
+    [requiredMarked] = "true"
+    [label]="'CLIENTS.CLIENT_SEARCH.FIRST_NAME' | translate"
     name="firstName"
     [control] = "form.controls.firstName"
   />
-
   <app-text-field
+    [requiredMarked] = "true"
     [label]="'CLIENTS.CLIENT_SEARCH.LAST_NAME' | translate"
     name="lastName"
     [control] = "form.controls.lastName"
   />
   <app-text-field
+    [requiredMarked] = "true"
     [label]="'CLIENTS.CLIENT_SEARCH.CODE_CLIENT' | translate"
     name="code"
     [control] = "form.controls.code"
   />
-
   <app-text-field
     [label]="'CLIENTS.CLIENT_SEARCH.TYPE' | translate"
     name="type"
     [control] = "form.controls.type"
   />
-
   <app-text-field
+    [requiredMarked] = "true"
     [label]="'CLIENTS.CLIENT_SEARCH.IPN' | translate"
     name="ipn"
     [control] = "form.controls.ipn"
   />
-
-
   <app-text-field
     [label]="'CLIENTS.CLIENT_SEARCH.SERIES_IDENTITY_DOCUMENT' | translate"
     name="seriesDoc"
     [control] = "form.controls.seriesDoc"
   />
-
-
   <app-text-field
     [label]="'CLIENTS.CLIENT_SEARCH.NUMBER_IDENTITY_DOCUMENT' | translate"
     name="numberDoc"
     [control] = "form.controls.numberDoc"
   />
-
-  <app-text-field
+  <app-select-field
     [label]="'CLIENTS.CLIENT_SEARCH.DEPARTMENT' | translate"
     name="department"
     [control] = "form.controls.department"
+    [options] = "departments()"
   />
 
 
-  <button type="submit"
+  @if (form.invalid && form.touched) {
+    <div class="search-hints">
+      @for (hint of hints(); track hint) {
+        <div class="search-hint">
+          <mat-icon>info_outline</mat-icon>
+          {{ hint }}
+        </div>
+      }
+    </div>
+  }
+
+<div class="form-buttons">
+  <button
+          class="btn-green"
+          type="submit"
           (click)="submit()"
+          [disabled] = "!this.form.valid"
           mat-stroked-button
   >
     search
   </button>
-
+  <button
+    class="btn-gray"
+    type="submit"
+    (click)="reset()"
+    mat-stroked-button
+  >
+    clear
+  </button>
+</div>
 </form>

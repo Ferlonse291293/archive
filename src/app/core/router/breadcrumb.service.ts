@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, signal} from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -9,14 +9,13 @@ export interface Breadcrumb {
 
 @Injectable({ providedIn: 'root' })
 export class BreadcrumbService {
-  breadcrumbs: Breadcrumb[] = [];
+  breadcrumbs  = signal<Breadcrumb[]>([]);
 
   constructor(private router: Router, private route: ActivatedRoute) {
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe(() => {
-        console.log( this.breadcrumbs)
-        this.breadcrumbs = this.build(this.route.root);
+        this.breadcrumbs.set(this.build(this.route.root)) ;
       });
   }
 

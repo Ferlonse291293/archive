@@ -14,10 +14,10 @@ import {JsonPipe} from '@angular/common';
   selector: 'app-text-field',
   templateUrl: './text-field.component.html',
   standalone: true,
-  styleUrl: './text-field.component.scss',
+  styleUrl: '../style-form.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule,
+    MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule
   ],
 })
 export class TextFieldComponent extends BaseFieldComponent{

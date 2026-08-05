@@ -1,18 +1,14 @@
 <div class="wrapper">
   <section class="panel ">
-    <div class="panel__header">
-      <button matIconButton class="btn-icon-circle" (click)="expandAll()">
-        <mat-icon class="mat-icon ">folder_code</mat-icon>
-      </button>
-      <button matIconButton class="btn-icon-circle" (click)="collapseAll()" >
-        <mat-icon class="mat-icon">expand_less</mat-icon>
-      </button>
-    </div>
+    <app-active-buttons
+      (expandAll) ="expandAll()"
+      (collapseAll) =" collapseAll()"
+      class="panel__header"/>
     <div class="panel__body">
+      <h1 class="name-client">{{currentClient?.fullName}}</h1>
       <app-tree-documents
         [documentsTree] = "treeDocuments | async"
       >
-
       </app-tree-documents>
     </div>
 

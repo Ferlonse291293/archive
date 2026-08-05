@@ -32,6 +32,8 @@ import {JsonPipe} from '@angular/common';
     MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule
   ],
   templateUrl: './password-field.component.html',
+
+  styleUrl: '../style-form.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppPasswordFieldComponent extends BaseFieldComponent {

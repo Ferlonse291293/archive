@@ -1,0 +1,21 @@
+
+
+<div class="pag">
+  <button class="pag-btn" [disabled]="!hasPreviousPage()" (click)="previousPage()">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+
+  @for (p of pages; track p) {
+    @if (p === '…') {
+      <span class="pag-dots">…</span>
+    } @else {
+      <button class="pag-btn" [class.active]="p === pageIndex + 1" (click)="goTo(+p)">
+        {{ p }}
+      </button>
+    }
+  }
+
+  <button class="pag-btn" [disabled]="!hasNextPage()" (click)="nextPage()">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
+</div>

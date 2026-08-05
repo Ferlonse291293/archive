@@ -29,7 +29,7 @@ export class DocumentsDataFacade implements IDocumentsDataFacade {
             return action.treeDoc;
           }
 
-          return   action.error;
+          throw action.error;
         })
       )
     );

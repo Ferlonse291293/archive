@@ -2,8 +2,23 @@
 @use "styles/shared";
 @use "styles/color";
 @use "styles/font";
+@use "styles/helpers";
 @use 'styles/components/buttons';
 @use 'styles/components/ui';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+}

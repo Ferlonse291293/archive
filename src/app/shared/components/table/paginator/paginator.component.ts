@@ -31,7 +31,7 @@ export class AppPaginatorComponent extends  MatPaginator  implements OnInit{
       effect(() => {
         this.length = this.paginatorController.length();
         this.pageSize = this.paginatorController.pageSize();
-        this.pageIndex = this.paginatorController.currentPage() - 1;
+        this.pageIndex = this.paginatorController.currentPage() ;
       }, { injector: this.injector });
 
 
@@ -39,12 +39,12 @@ export class AppPaginatorComponent extends  MatPaginator  implements OnInit{
 
     this.length = this.paginatorController.length();
     this.pageSize = this.paginatorController.pageSize();
-    this.pageIndex = this.paginatorController.currentPage() - 1;
+    this.pageIndex = this.paginatorController.currentPage() ;
     this.page
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(event => {
         this.paginatorController.onPageChange(event);
-        this.paginatorController.currentPage.update(pV => event.pageIndex + 1) ;
+        this.paginatorController.currentPage.update(pV => event.pageIndex ) ;
         this.paginatorController.pageSize.update(pV =>  event.pageSize) ;
       });
   }

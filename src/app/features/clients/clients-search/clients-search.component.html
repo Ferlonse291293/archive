@@ -7,4 +7,7 @@
   [dataGridController] = "dataGridController"
   (clickRow) = "getClientDetails($event)"
 />
-<app-paginator [paginatorController] = "dataGridController.paginator"/>
+@if (dataGridController.getData().length !== 0){
+  <app-paginator [paginatorController] = "dataGridController.paginator"/>
+}
+

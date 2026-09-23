@@ -14,6 +14,7 @@ import {
   IClientIndividualsFilter,
 } from '../../../core/data/endpoints/clients/clients-api.interface';
 import {IClientIndividualRow} from '../clients-search/clients-search.component';
+import {IDocumentController} from '../../../core/engines/document-controller/document-controller';
 
 const columns: IColumnsTable[] =[
   {
@@ -46,17 +47,21 @@ const columns: IColumnsTable[] =[
 
 
 
-export class ClientSearchSectionConfig implements ISectionConfig{
-  key: SectionsKey  = SectionsKeys.Clients.searchClient
-  params ={};
+export class ClientSearchSectionConfig implements ISectionConfig {
+  key: SectionsKey = SectionsKeys.Clients.searchClient;
+  params = {};
 
   data = [storeFacadeKeys.CLIENTS, storeFacadeKeys.DOCUMENTS];
   state = [storeFacadeKeys.CLIENTS, storeFacadeKeys.OPTIONS];
-  engines: {[EnginesKey.DATA_GRID]: IDataGridController<IClientIndividualRow, IClientIndividualsFilter> } = this.setEngines();
+  engines: { [EnginesKey.DATA_GRID]: IDataGridController<IClientIndividualRow, IClientIndividualsFilter> } = this.setEngines();
 
-  private setEngines(): Record<EnginesKey, any> {
+  private setEngines(): { [EnginesKey.DATA_GRID]: IDataGridController<IClientIndividualRow, IClientIndividualsFilter> } {
     return {
-      [EnginesKey.DATA_GRID] : new DataGridController(new DataGridTable(columns), new DataGridPagination(), new DataGridCache())
-    }
+      [EnginesKey.DATA_GRID]: new DataGridController(
+        new DataGridTable(columns),
+        new DataGridPagination(),
+        new DataGridCache()
+      )
+    };
   }
 }

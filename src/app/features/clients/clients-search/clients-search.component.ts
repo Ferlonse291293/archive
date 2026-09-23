@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ClientsContextService} from '../configs/clients-context.service';
 import {TableDynamicComponent} from '../../../shared/components/table/table-dynamic/table-dynamic.component';
 import {SectionsKeys} from '../../../core/model/sections-keys.namespace';
@@ -11,15 +11,16 @@ import {TranslateService} from '@ngx-translate/core';
 import {DataFacadeMap, StateFacadeMap} from '../../../core/facades/store-facade.registry';
 import {RouterService} from '../../../core/services/router.service';
 import {NavLinks} from '../../../core/router/navigation';
-import {AsyncPipe} from '@angular/common';
+import {AsyncPipe, JsonPipe} from '@angular/common';
 import {map, Observable,} from 'rxjs';
 import {SelectOption} from '../../../shared/components/form/select-field/select-field.component';
-import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {AppPaginatorComponent} from '../../../shared/components/table/paginator/paginator.component';
 import {IDataGridController} from '../../../core/engines/data-grid/data-grid-controller';
 import {EnginesKey} from '../../../core/engines/engines-key';
 import {IBaseSection} from '../../../core/base/base-section';
 import {PAGINATION_SORT} from '../../../core/model/const/pagination-sort';
+
 
 
 export interface IClientIndividualRow{
@@ -40,13 +41,14 @@ export interface IClientIndividualRow{
     ClientSearchFormComponent,
     AsyncPipe,
     MatPaginatorModule,
-    AppPaginatorComponent
+    AppPaginatorComponent,
+    JsonPipe
   ],
   templateUrl: './clients-search.component.html',
   styleUrl: './clients-search.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ClientsSearchComponent implements OnInit{
+export class ClientsSearchComponent implements OnInit {
   private clientsContext = inject(ClientsContextService);
   private translate = inject(TranslateService);
   private routerService = inject(RouterService);
@@ -71,7 +73,6 @@ export class ClientsSearchComponent implements OnInit{
     this.departmentsOptions$ = this.state.OPTIONS!.getDepartmentsOptions$().pipe(
       map(d => d.map(({ name, code }) => ({ label: name, value: code })))
     )
-
   }
 
   getClients(valueForm: IClientIndividualsFilter) {
@@ -95,7 +96,7 @@ export class ClientsSearchComponent implements OnInit{
         code: el.code,
         type: el.type,
         seriesNumberDoc: el.passportNumber,
-        department: el.department,
+        department: el.department.name,
         status: el.status
       }]
     }, [] as IClientIndividualRow[])
@@ -105,10 +106,5 @@ export class ClientsSearchComponent implements OnInit{
     Promise.all([ this.data.DOCUMENTS!.getDocumentsTree(clientRow.clientId), this.data.CLIENTS!.getIndividualClient(clientRow.clientId)]).then(([res1 , res2]) => {
       this.routerService.redirectTo(NavLinks.CLIENTS_DOCUMENTS)
     })
-  }
-
-
-  onPageChange($event: PageEvent) {
-    console.log($event)
   }
 }

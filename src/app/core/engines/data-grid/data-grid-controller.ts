@@ -22,6 +22,7 @@ export interface IDataGridController<T, TBody = Record<string, unknown>> {
   setMeta(params: IMetaPagination)
   setRequest(request: (req: IDataGridRequest<TBody>) => Promise<IDataGridResponse<T>>): void;
   onRequest(req: IDataGridRequest<TBody>): Promise<IDataGridResponse<T> | undefined>
+  resetState(): void
 }
 
 export interface IDataGridResponse<T> {
@@ -52,9 +53,11 @@ export class DataGridController<T, TBody = Record<string, unknown>> extends Data
   }
 
   init(meta: IMetaPagination , data: T[], req: IDataGridRequest<TBody>) {
+    console.log('init' ,this.getData())
     this.resetState()
     this.addPage(0, meta, data)
     this.cache.setRequestBody(req)
+
   }
    private addPage(pageNum: number, meta: IMetaPagination , data: T[]){
     this.setData(data)
@@ -74,13 +77,14 @@ export class DataGridController<T, TBody = Record<string, unknown>> extends Data
     this.paginator.setParams({
      pageSize: 10,
      length: params.totalItems,
-     currentPage: params.page + 1,
+     currentPage: params.page ,
     })
   }
 
   connect(): Observable<T[]> {
     return this.dataSubject.asObservable();
   }
+
 
   resetState(){
     this.cache.clear()
@@ -126,9 +130,7 @@ export class DataGridController<T, TBody = Record<string, unknown>> extends Data
 
 
   disconnect(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-    this.dataSubject.complete();
+     this.resetState()
   }
 
 }

@@ -1,3 +1,6 @@
 export enum EnginesKey {
-  DATA_GRID = "DATA_GRID"
+  DATA_GRID = "DATA_GRID",
+  DOCUMENT_CONTROLLER = "DOCUMENT_CONTROLLER"
 }
+
+

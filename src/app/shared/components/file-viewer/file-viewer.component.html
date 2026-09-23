@@ -1,0 +1,11 @@
+@switch (true) {
+  @case (isFilePDF(mimeType())) {
+    <app-pdf-viewer [safeUrl]="safeUrl()" />
+  }
+  @case (isFileImage(mimeType())) {
+    <app-image-viewer [safeUrl]="safeUrl()" />
+  }
+  @default {
+      <p>Предпросмотр недоступен</p>
+  }
+}

@@ -6,13 +6,16 @@ import {DocumentsDataFacade} from './data/documents-data.facade';
 import {DocumentStateFacade} from './state/document-state.facade';
 import {OptionsDataFacade} from './data/options-data-facade';
 import {OptionsStateFacade} from './state/options-state-facade';
+import {FilesDataFacade} from './data/files-data-facade';
+import {FilesStateFacade} from './state/files-state-facade';
 
 
 export const storeFacadeKeys = {
   AUTH: 'AUTH',
   CLIENTS: 'CLIENTS',
   DOCUMENTS: 'DOCUMENTS',
-  OPTIONS: 'OPTIONS'
+  OPTIONS: 'OPTIONS',
+  FILES: 'FILES',
 } as const;
 
 export type StoreFacadeKey = keyof typeof storeFacadeKeys;
@@ -22,6 +25,7 @@ export type DataFacadeMap = {
   CLIENTS?: ClientDataFacade
   DOCUMENTS?: DocumentsDataFacade
   OPTIONS?: OptionsDataFacade
+  FILES?: FilesDataFacade
 };
 
 export type StateFacadeMap = {
@@ -29,4 +33,5 @@ export type StateFacadeMap = {
   CLIENTS?: ClientStateFacade
   DOCUMENTS?: DocumentStateFacade
   OPTIONS?: OptionsStateFacade
+  FILES?: FilesStateFacade
 };

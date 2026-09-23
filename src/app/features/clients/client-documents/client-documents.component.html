@@ -1,29 +1,28 @@
 <div class="wrapper">
   <section class="panel ">
-    <app-active-buttons
-      (expandAll) ="expandAll()"
-      (collapseAll) =" collapseAll()"
-      class="panel__header"/>
+    <app-active-buttons class="panel__header" (expandAll) ="expandAll()" (collapseAll) =" collapseAll()"/>
     <div class="panel__body">
       <h1 class="name-client">{{currentClient?.fullName}}</h1>
-      <app-tree-documents
-        [documentsTree] = "treeDocuments | async"
-      >
-      </app-tree-documents>
+      <app-tree-items [itemsTree] = "treeDocuments | async" (clickItem) ="getDocument($event)" />
     </div>
 
-
   </section>
   <section class="panel">
     <div class="panel__header"></div>
     <div class="panel__body"></div>
-
   </section>
 
-
   <section class="panel">
-    <div class="panel__header"></div>
-    <div class="panel__body"></div>
+    <div class="panel__header">
+      @if (fileItems().length > 0){
+        <app-dropdown [items] = "fileItems()" (onSelectItem) ="getFile($event)"/>
+      }
+    </div>
+    <div class="panel__body">
+      @if (!!currentFile()?.url) {
+        <app-file-viewer [url] ="currentFile().url" [mimeType]="currentFile().mimeType"/>
+      }
 
+    </div>
   </section>
 </div>

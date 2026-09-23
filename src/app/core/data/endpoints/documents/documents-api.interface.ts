@@ -33,13 +33,14 @@ export interface IDocumentGroup {
   currentVersion?: IDocument;
 }
 
-type TreeElementsType = 'DOCUMENT' | 'FOLDER';
+type TreeElementsType = "ITEM" | "FOLDER";
 
 export interface BaseTreeNode {
   id: string;
   name: string;
   type: TreeElementsType;
   parentId: string | 'root';
+  children: any[]
 }
 
 export interface FolderNode extends BaseTreeNode {
@@ -49,7 +50,7 @@ export interface FolderNode extends BaseTreeNode {
 }
 
 export interface DocumentNode extends BaseTreeNode {
-  type: 'DOCUMENT';
+  type: "ITEM";
   content: IDocumentRef;
   children: IDocumentTree[];
 }
@@ -78,7 +79,7 @@ export interface IMetadata {
 
 export interface IFile {
   id: string;
-  documentId: string;
+  documentId?: string;
   fileName: string;
   mimeType: string;
   sizeBytes: number;
@@ -98,4 +99,21 @@ export interface ITreeElements{
   "parentId": "string | 'root'",
   "name": "string",
   "children": ITreeElements[] | null
+}
+
+export interface  IDocumentVersionDto {
+  documentId: string;
+  version: number;
+  name: string;
+}
+
+export interface  IMetadataDto extends IMetadata{
+  createdAt: Date;
+}
+
+export interface  IDocumentDto {
+  id: string;
+  metadata: IMetadataDto;
+  versions: IDocumentVersionDto[];
+  files: IFile[]
 }

@@ -3,7 +3,7 @@ import {Observable} from 'rxjs';
 import {environment} from '../../../../../environments/environment';
 import {inject, Injectable} from '@angular/core';
 import {ApiService} from '../../api/api.service';
-import {IDocument, IDocumentTree} from './documents-api.interface';
+import {IDocumentDto, IDocumentTree} from './documents-api.interface';
 
 
 @Injectable({providedIn: 'root'})
@@ -14,7 +14,7 @@ export class DocumentsApi {
   getDocumentsTree(id: string): Observable<IDocumentTree>  {
     return this.apiService.get(`${environment.apiUrl}/documents/tree/${id}`)
   }
-  getDocument(id: string): Observable<IDocument> {
+  getDocument(id: string): Observable<IDocumentDto> {
     return this.apiService.get(`${environment.apiUrl}/documents/${id}`)
   }
 

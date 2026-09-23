@@ -1,13 +1,13 @@
-import {IDocument, IDocumentTree} from '../../core/data/endpoints/documents/documents-api.interface';
+import {IDocument, IDocumentDto, IDocumentTree} from '../../core/data/endpoints/documents/documents-api.interface';
 
 export interface DocumentsState {
   treeDocuments: IDocumentTree
-  currentDocument: IDocument
+  currentDocument: IDocumentDto
 }
 
 export const initialDocumentsState: DocumentsState = {
   treeDocuments: {} as IDocumentTree,
-  currentDocument: {} as IDocument
+  currentDocument: {} as IDocumentDto
 };
 
 

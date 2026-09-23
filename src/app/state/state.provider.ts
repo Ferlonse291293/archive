@@ -9,6 +9,7 @@ import {authFeature} from './auth/auth.feature';
 import {clientsFeature} from './clients/clients.feature';
 import {documentsFeature} from './documents/documents.feature';
 import {optionsFeature} from './options/options.feature';
+import {filesFeature} from './files/files.feature';
 
 
 
@@ -21,6 +22,7 @@ export const stateProvider = [
   ...clientsFeature,
   ...documentsFeature,
   ...optionsFeature,
+  ...filesFeature,
 
   provideStoreDevtools({
     maxAge: 25,

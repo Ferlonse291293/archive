@@ -1,5 +1,5 @@
 import {
-  ApplicationConfig,
+  ApplicationConfig, ErrorHandler,
   provideZoneChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
@@ -11,7 +11,7 @@ import {stateProvider} from './state/state.provider';
 import {translateInitProvider, translateProvider} from './core/config/translate/translate.provider';
 import {dataProvider} from './core/data/data.provider';
 import {provideStoreDevtools} from '@ngrx/store-devtools';
-import {provideAnimations} from '@angular/platform-browser/animations';
+import {GlobalErrorHandler} from './core/services/global-error-handler.service';
 
 
 
@@ -22,7 +22,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(  withFetch(), withInterceptors(dataProvider)),
 
     provideRouter(routes),
-
+    { provide: ErrorHandler, useClass: GlobalErrorHandler },
     provideClientHydration(withEventReplay()),
 
     translateProvider,

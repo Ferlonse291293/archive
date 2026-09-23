@@ -1,4 +1,5 @@
-@use '../../../../styles/color';
+@use 'color';
+@use 'helpers';
 
 :host ::ng-deep .mat-mdc-list-item-unscoped-content {
   display: flex !important;
@@ -33,7 +34,7 @@
 }
 
 mat-nav-list a[mat-list-item] {
-
+@extend .no-select-text;
   color: color.$green-active-middle;
   width: 100%;
   cursor: pointer;

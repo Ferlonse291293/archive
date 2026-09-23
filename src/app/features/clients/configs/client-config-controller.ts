@@ -7,6 +7,6 @@ import {IConfigController} from '../../../core/base/base-controller';
 
 export const clientConfig: IConfigController =  {
   sections: [new  ClientSearchSectionConfig() , new ClientDocumentsSectionConfig()],
-  data: [storeFacadeKeys.CLIENTS,storeFacadeKeys.DOCUMENTS],
+  data: [storeFacadeKeys.CLIENTS,storeFacadeKeys.DOCUMENTS, storeFacadeKeys.FILES],
   state: [storeFacadeKeys.CLIENTS, storeFacadeKeys.DOCUMENTS, storeFacadeKeys.OPTIONS]
 }

@@ -1,0 +1,147 @@
+:host {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  //margin-left: auto;
+  font-family: inherit;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: nowrap;
+  width: 200px;
+  height: 44px;
+  border: 1px solid #d0d5e3;
+  border-radius: 0;
+  padding: 0 16px;
+  text-align: left;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2b2f3a;
+  background: #ffffff;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+  box-shadow: none;
+
+  &:hover {
+    background: #f5f6fa;
+    border-color: #a9b2cc;
+  }
+
+  &:active {
+    background: #ecefF7;
+  }
+
+
+  .mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  .chevron {
+    margin-left: auto;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    transition: transform 0.25s ease;
+  }
+
+  &.open .chevron {
+    transform: rotate(180deg);
+  }
+
+  p {
+    font-size: 13px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+  }
+}
+.dropdown-img{
+  width: auto;
+  height: 30px;
+}
+
+.dropdown__menu {
+  background: #ffffff;
+  width: 100%;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 10;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  animation: dropdown-in 0.18s ease;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #2b2f3a;
+  transition: background 0.15s ease;
+
+  .mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: #6b7280;
+  }
+
+  p {
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &:hover {
+    background: #f1f2f5;
+  }
+
+  &.selected {
+    background: #e4e8f7;
+    color: #3546c9;
+    font-weight: 500;
+
+    .mat-icon {
+      color: #3546c9;
+    }
+  }
+}

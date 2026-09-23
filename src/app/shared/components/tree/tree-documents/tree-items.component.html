@@ -2,27 +2,33 @@
 <cdk-tree #tree [dataSource]="dataSource" [childrenAccessor]="childrenAccessor">
 
 
-  <cdk-nested-tree-node  *cdkTreeNodeDef="let node; when: isDocument"
+  <cdk-nested-tree-node  *cdkTreeNodeDef="let node; when: isItem"
                         class="tree-node">
-    <button matIconButton class="btn-icon ">
-      <mat-icon class="mat-icon-document">description</mat-icon>
+    <button matIconButton
+            class="btn-icon tree-btn"
+            (click)="onClickItem($event, node)"
+    >
+      <mat-icon class="mat-icon-item">description</mat-icon>
+      <p class="tree-title">{{ node.name + ' 0.' + node.content.version }}</p>
     </button>
 
-    {{ node.name + ' 0.' + node.content.version }}
   </cdk-nested-tree-node>
 
 
   <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: isFolder"
                         isExpandable
-                        class="tree-node">
+                        class="tree-node"
+                        (click)="onClickFolder($event, node)"
+  >
 
-    <button matIconButton class="btn-icon " cdkTreeNodeToggle>
+    <button matIconButton class="btn-icon tree-btn" cdkTreeNodeToggle>
       <mat-icon class="mat-icon-folder">
         {{ tree.isExpanded(node) ? 'folder_open' : 'folder' }}
       </mat-icon>
+    <p class="tree-title">{{ node.name }}</p>
     </button>
 
-    {{ node.name }}
+
 
     <div [class.tree-invisible]="!tree.isExpanded(node)">
       <ng-container cdkTreeNodeOutlet></ng-container>

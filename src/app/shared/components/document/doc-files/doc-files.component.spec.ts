@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TreeDocumentsComponent } from './tree-documents.component';
+import { DocFilesComponent } from './doc-files.component';
 
-describe('TreeDocumentsComponent', () => {
-  let component: TreeDocumentsComponent;
-  let fixture: ComponentFixture<TreeDocumentsComponent>;
+describe('DocFilesComponent', () => {
+  let component: DocFilesComponent;
+  let fixture: ComponentFixture<DocFilesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TreeDocumentsComponent]
+      imports: [DocFilesComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TreeDocumentsComponent);
+    fixture = TestBed.createComponent(DocFilesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

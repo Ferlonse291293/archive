@@ -1,4 +1,5 @@
 import {PAGINATION_SORT} from '../../../model/const/pagination-sort';
+import {IOption} from '../options/options-api.interface';
 
 export interface IClient {
   typeClient: TypeClient
@@ -47,7 +48,7 @@ export interface IClientIndividualListItem {
   ipn: string
   type: string
   passportNumber: string
-  department: string
+  department: IOption
   status: string
 }
 export interface IClientIndividualsFilter {

@@ -21,6 +21,7 @@ export class AuthStateFacade{
 
   getUser$(): Observable<IUser>{
   return this.store.select(AuthSelectors.user)
+
   }
   getUser(): Promise<IUser>{
     return firstValueFrom(this.store.select(AuthSelectors.user))

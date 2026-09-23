@@ -1,4 +1,4 @@
-// documents.actions.ts
+// files.actions.ts
 import {createActionGroup, emptyProps, props} from '@ngrx/store';
 import {IOptionResponse} from '../../core/data/endpoints/options/options-api.interface';
 

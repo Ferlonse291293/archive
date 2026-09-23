@@ -1,4 +1,4 @@
-import {Directive, ElementRef, inject, input, output} from '@angular/core';
+import {Directive, effect, ElementRef, HostListener, inject, input, model, output} from '@angular/core';
 
 @Directive({
   selector: '[clickOutside]',
@@ -9,11 +9,9 @@ import {Directive, ElementRef, inject, input, output} from '@angular/core';
 })
 export class ClickOutsideDirective {
   private el = inject(ElementRef);
-  enabled = input(false);
+  enabled = model<boolean>(true);
   clickOutside = output<void>();
   onDocumentClick(event: MouseEvent) {
-    event.stopPropagation()
-    event.preventDefault()
     if (!this.enabled()) {
       return;
     }

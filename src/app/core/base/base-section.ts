@@ -1,11 +1,11 @@
-import {SectionsKey} from '../model/sections-keys.namespace';
 import {DataFacadeMap, StateFacadeMap, StoreFacadeKey} from '../facades/store-facade.registry';
+import {SectionsKey} from '../model/sections-keys.namespace';
 import {EnginesKey} from '../engines/engines-key';
 
-export interface IBaseSection{
+export interface IBaseSection {
   key: SectionsKey
   params: Record<any, any>;
-  engines?: Partial<Record<EnginesKey, any>>  | undefined ;
+  engines?: Partial<Record<EnginesKey, any>> | undefined;
   state: Partial<StateFacadeMap>
   data: Partial<DataFacadeMap>
   preInit(): void;
@@ -13,38 +13,33 @@ export interface IBaseSection{
   destroy(): void;
 }
 
-export interface ISectionConfig {
+export interface ISectionConfig<E extends Partial<Record<EnginesKey, any>> = Partial<Record<EnginesKey, any>>> {
   key: SectionsKey
   params?: Record<any, any>
-  engines?: Record<EnginesKey, any>;
-  data?:any
+  engines?: E;
+  data?: any
   state?: any
 }
 
-
-
-export class BaseSection implements IBaseSection{
+export class BaseSection<E extends Partial<Record<EnginesKey, any>> = Partial<Record<EnginesKey, any>>>
+  implements IBaseSection {
   key!: SectionsKey
   params: Record<any, any> = {}
   data: Partial<Record<StoreFacadeKey, any>> = {}
   state: Partial<Record<StoreFacadeKey, any>> = {}
-  engines: Partial<Record<EnginesKey, any>>  | undefined ;
-
-  constructor(config: ISectionConfig) {
+  engines: E | undefined;
+  constructor(config: ISectionConfig<E>) {
     this.init(config)
   }
-  init(config: ISectionConfig) {
-    this.key = config.key ??  undefined;
+
+  init(config: ISectionConfig<E>) {
+    this.key = config.key;
     this.params = config.params ?? {};
-    this.state = config.state ??  undefined;
-    this.data = config.data ?? undefined;
-    this.engines = config.engines ?? undefined;
-  }
-  preInit() {
-
-  }
-  destroy() {
+    this.state = config.state;
+    this.data = config.data;
+    this.engines = config.engines;
   }
 
-
+  preInit() {}
+  destroy() {}
 }

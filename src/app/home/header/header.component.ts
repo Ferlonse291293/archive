@@ -1,11 +1,10 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
-import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {TranslateService} from '@ngx-translate/core';
 import {MatIcon} from '@angular/material/icon';
 import {Store} from '@ngrx/store';
 import {MatButton, MatIconButton} from '@angular/material/button';
 
 import {MatToolbar} from '@angular/material/toolbar';
-import {settingsActions, toggleSidebarActions} from '../../state/settings/settings.actions';
 import {LogoComponent} from '../../shared/components/logo/logo/logo.component';
 import {SidebarService} from '../sidebar/sidebar.service';
 

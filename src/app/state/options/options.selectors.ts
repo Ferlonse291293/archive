@@ -1,7 +1,8 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {OptionsState} from './options.state';
+import {FEATURE_NAMES} from '../feature-names';
 
-export const selectOptionsState =  createFeatureSelector<OptionsState>('options')
+export const selectOptionsState =  createFeatureSelector<OptionsState>(FEATURE_NAMES.OPTIONS)
 
 export const getAllOptions = createSelector(
   selectOptionsState,

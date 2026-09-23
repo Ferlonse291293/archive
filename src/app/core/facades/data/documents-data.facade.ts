@@ -1,12 +1,13 @@
 import {Actions, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
 import {firstValueFrom, map, take} from 'rxjs';
-import {IDocument, IDocumentTree} from '../../data/endpoints/documents/documents-api.interface';
+import {IDocument, IDocumentDto, IDocumentTree} from '../../data/endpoints/documents/documents-api.interface';
 import {DocumentsActions} from '../../../state/documents/documents.actions';
 
 
 export interface IDocumentsDataFacade {
   getDocumentsTree(clientId: string): Promise<IDocumentTree>
+  getDocument(documentId: string): Promise<IDocumentDto>
 }
 
 export class DocumentsDataFacade implements IDocumentsDataFacade {
@@ -35,7 +36,7 @@ export class DocumentsDataFacade implements IDocumentsDataFacade {
     );
   }
 
-  getDocument(documentId: string): Promise<IDocument> {
+  getDocument(documentId: string): Promise<IDocumentDto> {
     const requestId = crypto.randomUUID();
     this.store.dispatch(DocumentsActions.getDocument.req({documentId: documentId}))
 

@@ -16,7 +16,7 @@
   @for (item of sidebarItems; track item ){
 
     <a mat-list-item
-
+       [disableRipple]="true"
        (click)="redirectTo(item.link)"
     >
       <mat-icon>{{item?.iconName}}</mat-icon>

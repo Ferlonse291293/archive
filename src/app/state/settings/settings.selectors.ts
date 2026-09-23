@@ -1,7 +1,8 @@
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {SettingsState} from './settings.state';
+import {FEATURE_NAMES} from '../feature-names';
 
-export const selectSettingsState = createFeatureSelector<SettingsState>('settings')
+export const selectSettingsState = createFeatureSelector<SettingsState>(FEATURE_NAMES.SETTINGS)
 
 export const currentLanguage = createSelector(
   selectSettingsState,
